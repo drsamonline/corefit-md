@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoreFit MD — five minutes, and the clip starts where the movement starts</title>
+<meta name="description" content="A five-minute, video-guided morning core routine. Every set opens on the demonstration at 0:30, never on the intro. Static, offline-first, no backend, no account.">
+<meta property="og:title" content="CoreFit MD">
+<meta property="og:description" content="A five-minute morning core routine where every clip opens at the movement, not the intro.">
+<meta property="og:image" content="assets/app-desktop.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="play/icons/icon-192.png" sizes="192x192">
+<link rel="stylesheet" href="assets/fonts/landing-fonts.css">
+<script>
+/* Resolve the theme before first paint — no flash of the wrong one. */
+(function () {
+  try {
+    var t = localStorage.getItem('corefit.landing.theme') || 'auto';
+    var dark = t === 'dark' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  } catch (e) {}
+})();
+</script>
+<style>
+:root{
+  --bg:#f2f3f0; --surface:#fbfbf9; --sunk:#e8eae5;
+  --ink:#0f1417; --ink-2:#3d474d; --muted:#66727a;
+  --line:#d9dcd6; --line-2:#e7e9e4;
+  --accent:#2f4fd8; --accent-ink:#f4f6ff; --accent-soft:#e4e9fb;
+  --warm:#a8452a;
+  --band:#0a0c0e; --band-2:#111519; --band-ink:#f0f1ec; --band-muted:#98a2a8; --band-line:#242b31;
+  --serif:'Instrument Serif',ui-serif,Georgia,'Times New Roman',serif;
+  --sans:'IBM Plex Sans',ui-sans-serif,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 1px 2px rgba(15,20,23,.05), 0 18px 40px -28px rgba(15,20,23,.5);
+}
+:root[data-theme="dark"]{
+  --bg:#0a0c0e; --surface:#12161a; --sunk:#0e1216;
+  --ink:#eef0eb; --ink-2:#c2c9cd; --muted:#8e9aa1;
+  --line:#242b31; --line-2:#1b2126;
+  --accent:#8098ff; --accent-ink:#0a0c0e; --accent-soft:#171e33;
+  --warm:#e08a63;
+  --band:#080a0b; --band-2:#10141a; --band-ink:#f0f1ec; --band-muted:#96a1a8; --band-line:#232a30;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 24px 50px -34px rgba(0,0,0,.9);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:17px/1.62 var(--sans);
+  -webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(90deg,var(--line-2) 1px,transparent 1px);
+  background-size:calc((100% - 0px)/6) 100%;
+  background-position:0 0;
+}
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.6rem}
+a{color:var(--accent);text-underline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;margin:0}
+em{font-style:italic}
+
+/* ---------- band + topbar ---------- */
+.band{height:5px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent) 22%,transparent 60%)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0 .4rem}
+.wordmark{font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.wordmark b{color:var(--accent);font-weight:500}
+.topnav{display:flex;align-items:center;gap:.2rem}
+.topnav a,.themebtn{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;padding:.5rem .65rem;border-radius:.45rem;border:1px solid transparent;
+}
+.topnav a:hover{color:var(--ink);border-color:var(--line)}
+.themebtn{cursor:pointer;background:transparent;display:inline-flex;align-items:center;gap:.4rem}
+.themebtn:hover{color:var(--ink);border-color:var(--line)}
+.themebtn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
+
+/* ---------- hero ---------- */
+header.hero{padding:3.4rem 0 2.6rem}
+.eyebrow{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:.6rem;margin:0 0 1.4rem}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
+h1{font-size:clamp(2.7rem,6.4vw,4.6rem);line-height:.98;max-width:22ch}
+h1 em{display:block;color:var(--ink-2);font-size:.62em;line-height:1.08;margin-top:.28em}
+.lede{font-size:1.16rem;line-height:1.62;max-width:40rem;color:var(--ink-2);margin:1.5rem 0 0}
+.lede b{color:var(--ink);font-weight:600}
+.cta{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.9rem 0 1.5rem}
+.btn{
+  font-family:var(--sans);font-size:.92rem;font-weight:500;text-decoration:none;
+  padding:.72rem 1.15rem;border-radius:.55rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  display:inline-flex;align-items:center;gap:.5rem;transition:transform .12s,border-color .15s;
+}
+.btn:hover{transform:translateY(-1px);border-color:var(--muted)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.badges{display:flex;flex-wrap:wrap;gap:.35rem;margin:0 0 1.6rem}
+.badges img{height:22px;display:block}
+.facts{display:flex;flex-wrap:wrap;gap:1.4rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);padding-top:1.2rem;border-top:1px solid var(--line)}
+.facts b{color:var(--ink);font-weight:500}
+
+/* ---------- demo band ---------- */
+.demo{background:var(--band);color:var(--band-ink);margin-top:2rem;padding:3.4rem 0 3.6rem;border-top:1px solid var(--band-line)}
+.demo .wrap{display:grid;grid-template-columns:1fr 420px;gap:3.2rem;align-items:center}
+.demo-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--band-muted);
+  display:flex;align-items:center;gap:.6rem;margin:0 0 1rem}
+.demo-label i{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(47,79,216,.18)}
+.demo h2{font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.06;max-width:18ch;color:var(--band-ink)}
+.demo p{color:var(--band-muted);font-size:1rem;max-width:34ch;margin:1rem 0 0}
+.guide{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.6rem}
+.guide button{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  background:transparent;color:var(--band-muted);border:1px solid var(--band-line);border-radius:.45rem;
+  padding:.55rem .75rem;transition:color .15s,border-color .15s,background .15s;
+}
+.guide button:hover{color:var(--band-ink);border-color:#3a444c}
+.guide button[aria-pressed="true"]{background:var(--band-ink);color:var(--band);border-color:var(--band-ink)}
+.demo-note{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--band-muted);margin-top:1.2rem;
+  padding-top:1rem;border-top:1px solid var(--band-line);max-width:34ch;line-height:1.8}
+
+.device{position:relative;justify-self:center;width:100%;max-width:390px}
+.device-body{
+  position:relative;border-radius:2.2rem;padding:.7rem;background:linear-gradient(160deg,#2a3138,#12161a 55%,#05070a);
+  border:1px solid #2c343b;box-shadow:0 40px 80px -40px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.05);
+}
+.device-screen{position:relative;border-radius:1.65rem;overflow:hidden;background:#0a0c0e;aspect-ratio:430/860}
+.device-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.device-screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;transition:opacity .4s ease}
+.device.live .device-screen iframe{opacity:1}
+.device-notch{position:absolute;top:.7rem;left:50%;transform:translateX(-50%);width:34%;height:1.35rem;
+  background:#0a0c0e;border-radius:0 0 .8rem .8rem;z-index:3}
+.device-cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--band-muted);
+  text-align:center;margin-top:1rem}
+
+/* ---------- sections ---------- */
+section{padding:3.6rem 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+.sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+.sec-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:var(--muted)}
+h2.sec{font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.1}
+.sec-sub{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.6rem 0 0}
+
+.cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:.8rem;padding:1.4rem 1.3rem;box-shadow:var(--shadow)}
+.card .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.7rem}
+.card h3{font-size:1.32rem;line-height:1.2;margin-bottom:.5rem}
+.card p{margin:0;color:var(--ink-2);font-size:.94rem;line-height:1.62}
+
+.rules{list-style:none;padding:0;margin:0;display:grid;gap:.85rem}
+.rules li{
+  display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
+  background:var(--surface);border:1px solid var(--line);border-radius:.7rem;padding:1rem 1.2rem;
+}
+.rules .x{font-family:var(--mono);font-size:.7rem;color:var(--warm);border:1px solid var(--warm);border-radius:50%;
+  width:1.35rem;height:1.35rem;display:grid;place-items:center;margin-top:.15rem}
+.rules b{display:block;font-weight:600;font-size:.98rem}
+.rules span{color:var(--muted);font-size:.9rem;line-height:1.55}
+
+/* the rule figure */
+.rulefig{display:grid;grid-template-columns:1.05fr .95fr;gap:2.6rem;align-items:center}
+.scrub{background:var(--surface);border:1px solid var(--line);border-radius:.9rem;padding:1.5rem 1.3rem 1.1rem;box-shadow:var(--shadow)}
+.scrub-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  display:flex;justify-content:space-between;margin-bottom:.7rem}
+.scrub svg{width:100%;height:auto;display:block}
+.rulefig p{color:var(--ink-2);font-size:.98rem;line-height:1.68;margin:0 0 1rem}
+.rulefig p:last-child{margin:0}
+.rulefig b{color:var(--ink);font-weight:600}
+
+/* numbers */
+.numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:.8rem;overflow:hidden}
+.num{background:var(--surface);padding:1.3rem 1.1rem}
+.num b{display:block;font-family:var(--serif);font-size:2.2rem;line-height:1;letter-spacing:-.02em}
+.num span{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-top:.5rem}
+
+/* run */
+.run{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+pre{background:var(--band);color:#dfe3e8;border-radius:.7rem;padding:1.1rem 1.2rem;overflow-x:auto;
+  font-family:var(--mono);font-size:.76rem;line-height:1.75;margin:0;border:1px solid var(--band-line)}
+pre .c{color:#6f7b84}
+pre .p{color:#8fd0a8}
+.tree{font-family:var(--mono);font-size:.72rem;line-height:1.9;color:var(--ink-2);margin:0;white-space:pre;overflow-x:auto}
+.tree b{color:#f4f6f2;font-weight:500}
+
+footer{padding:2.6rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;align-items:flex-end}
+footer .stamp{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+@media (max-width:900px){
+  .demo .wrap{grid-template-columns:1fr;gap:2.4rem}
+  .device{max-width:330px}
+  .rulefig{grid-template-columns:1fr;gap:1.6rem}
+  .run{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .wrap{padding:0 1.1rem}
+  .topnav a:not(.themebtn){display:none}
+  header.hero{padding:2.4rem 0 1.8rem}
+  .facts{gap:.9rem}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="band"></div>
+
+<div class="wrap">
+  <div class="topbar">
+    <a class="wordmark" href="./">corefit<b>·</b>md</a>
+    <nav class="topnav">
+      <a href="#what">What it does</a>
+      <a href="#rule">The rule</a>
+      <a href="play/">The app</a>
+      <a href="https://github.com/drsamonline/corefit-md">Source</a>
+      <button class="themebtn" id="themeBtn" aria-label="Colour theme">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor" stroke="none"/></svg>
+        <span id="themeLabel">Auto</span>
+      </button>
+    </nav>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow"><i></i>drsamonline · health tools</p>
+    <h1>CoreFit MD
+      <em>Five minutes, and the clip starts where the movement starts.</em>
+    </h1>
+    <p class="lede">A morning core routine of five moves, guided by video. Every exercise clip opens at its
+      <b>0:30 mark</b> — the demonstration — and loops only inside that window, so a set never begins on an
+      intro, a talking head or a sponsor read. No account, no server, no tracking.</p>
+    <div class="cta">
+      <a class="btn primary" href="play/">Open the app
+        <svg viewBox="0 0 24 24"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+      <a class="btn" href="https://github.com/drsamonline/corefit-md">Read the source</a>
+      <a class="btn" href="https://github.com/drsamonline/corefit-md/blob/main/BACKLOG.md">Backlog</a>
+    </div>
+    <div class="badges">
+      <img alt="live: online" src="assets/badge-live.svg">
+      <img alt="offline: UI + history" src="assets/badge-offline.svg">
+      <img alt="deps: 0 runtime" src="assets/badge-deps.svg">
+      <img alt="backend: none" src="assets/badge-backend.svg">
+      <img alt="langs: EN HI GU" src="assets/badge-langs.svg">
+      <img alt="licence: MIT" src="assets/badge-licence.svg">
+    </div>
+    <div class="facts">
+      <span><b>21</b> files</span>
+      <span><b>0</b> dependencies</span>
+      <span><b>3</b> languages</span>
+      <span><b>6:15</b> warm-up to cool-down</span>
+      <span><b>MIT</b> licence</span>
+    </div>
+  </header>
+</div>
+
+<div class="demo">
+  <div class="wrap">
+    <div>
+      <p class="demo-label"><i></i>Live demo</p>
+      <h2>This is the app itself, not a picture of it.</h2>
+      <p>Four buttons below drive the real thing — the same build that ships in <code>docs/play/</code>.</p>
+      <div class="guide" id="guide">
+        <button data-go="" aria-pressed="true">Today</button>
+        <button data-go="#progress" aria-pressed="false">Progress</button>
+        <button data-go="#library" aria-pressed="false">Library</button>
+        <button data-go="?lang=hi#today" aria-pressed="false">हिन्दी</button>
+      </div>
+      <p class="demo-note">Sessions and clips are stored in this browser only. Starting a workout inside this
+        frame is fine, but open the app properly for sound and full-screen.</p>
+    </div>
+    <div class="device" id="device">
+      <div class="device-body">
+        <div class="device-notch"></div>
+        <div class="device-screen">
+          <img src="assets/app-mobile.png" alt="CoreFit MD today view: a session plan of five exercises with a start button">
+          <iframe id="frame" src="play/" title="CoreFit MD — live app" loading="lazy"></iframe>
+        </div>
+      </div>
+      <p class="device-cap">430 × 860 · the real build</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="what">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec">What it does</h2></div>
+    <div class="cards">
+      <div class="card">
+        <span class="k">Playback</span>
+        <h3>Every set opens on the movement</h3>
+        <p>Each exercise carries a clip window. The player starts at 0:30, re-seeks on ready, and a watchdog pulls
+          it back if playback ever passes the window end — so fifty seconds of plank keeps showing the plank.</p>
+      </div>
+      <div class="card">
+        <span class="k">Programme</span>
+        <h3>Six weeks that get harder</h3>
+        <p>Work intervals climb from 45 to 60 seconds with a deload in week four, driven by how many sessions you
+          have actually logged. Warm-up and cool-down bracket every session.</p>
+      </div>
+      <div class="card">
+        <span class="k">Privacy</span>
+        <h3>Nothing leaves the device</h3>
+        <p>History, streaks, clip windows and settings live in this browser. Export a JSON backup, print a
+          one-page summary, or wipe it by clearing site data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec">What it refuses to do</h2></div>
+    <ul class="rules">
+      <li><span class="x">✕</span><div><b>No account, no sign-in, no sync</b>
+        <span>There is no server to sync with. A backup file is the whole sync story.</span></div></li>
+      <li><span class="x">✕</span><div><b>No analytics, no third-party scripts</b>
+        <span>The only network requests the app makes are the video embed and its thumbnail.</span></div></li>
+      <li><span class="x">✕</span><div><b>No streak mechanics that punish rest</b>
+        <span>One missed day is forgiven anywhere in the chain. Two in a row end it.</span></div></li>
+      <li><span class="x">✕</span><div><b>No medical claims</b>
+        <span>It screens for contraindications and tells you to stop if a move hurts. It is a training aid, not advice.</span></div></li>
+    </ul>
+  </section>
+
+  <section id="rule">
+    <div class="sec-head">
+      <span class="sec-num">03</span><h2 class="sec">The rule</h2>
+      <p class="sec-sub">Why the first frame is the one that matters.</p>
+    </div>
+    <div class="rulefig">
+      <div class="scrub">
+        <div class="scrub-label"><span>0:00 — 1:20 of source video</span><span>playback window</span></div>
+        <svg viewBox="0 0 520 132" role="img" aria-label="A timeline showing playback starting at 0:30 and looping between 0:30 and 0:55">
+          <defs>
+            <linearGradient id="win" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#2f4fd8" stop-opacity=".22"/>
+              <stop offset="1" stop-color="#2f4fd8" stop-opacity=".08"/>
+            </linearGradient>
+          </defs>
+          <line x1="10" y1="70" x2="510" y2="70" stroke="currentColor" stroke-opacity=".3" stroke-width="1"/>
+          <rect x="196" y="34" width="196" height="72" rx="8" fill="url(#win)" stroke="#2f4fd8" stroke-opacity=".45"/>
+          <g stroke="currentColor" stroke-opacity=".3">
+            <line x1="10" y1="58" x2="10" y2="82"/><line x1="196" y1="50" x2="196" y2="90"/>
+            <line x1="392" y1="50" x2="392" y2="90"/><line x1="510" y1="58" x2="510" y2="82"/>
+          </g>
+          <g fill="currentColor" fill-opacity=".62" font-family="IBM Plex Mono,monospace" font-size="11">
+            <text x="10" y="108">0:00</text><text x="182" y="108">0:30</text>
+            <text x="372" y="108">0:55</text><text x="486" y="108">1:20</text>
+          </g>
+          <circle cx="196" cy="70" r="5" fill="#2f4fd8"/>
+          <circle cx="392" cy="70" r="5" fill="#2f4fd8"/>
+          <text x="204" y="28" fill="#2f4fd8" font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="1.2">START</text>
+          <text x="400" y="28" fill="#2f4fd8" font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="1.2">LOOP</text>
+          <text x="14" y="28" fill="currentColor" fill-opacity=".55" font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="1.2">INTRO · SKIPPED</text>
+        </svg>
+      </div>
+      <div>
+        <p>Most workout apps embed a video and press play. The clip begins with a channel ident, then a
+          presenter explaining the move, then the movement — by which point you have lost fifteen seconds of a
+          fifty-second set.</p>
+        <p>Here the clip window is data: <b>start 0:30, end 0:55</b>, editable per exercise. The player is created
+          with that start, seeked again the moment it is ready, and re-seeked whenever playback passes the end.
+          During each rest interval the next clip is preloaded, so the following set opens instantly.</p>
+        <p>If an embed is blocked, the session still runs — a poster and a deep link to the exact second replace
+          the video, and the timer never notices.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec">The numbers</h2></div>
+    <div class="numbers">
+      <div class="num"><b>5</b><span>moves</span></div>
+      <div class="num"><b>6:15</b><span>week 1, full session</span></div>
+      <div class="num"><b>0:30</b><span>clip in-point</span></div>
+      <div class="num"><b>3</b><span>languages</span></div>
+      <div class="num"><b>0</b><span>runtime deps</span></div>
+      <div class="num"><b>312</b><span>KB, whole app</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec">Run it</h2></div>
+    <div class="run">
+      <pre><span class="c"># any static server works</span>
+git clone https://github.com/drsamonline/corefit-md
+cd corefit-md
+python3 -m http.server 8080
+<span class="c"># then open localhost:8080/docs/</span>
+
+<span class="c"># the app alone, from disk:</span>
+open docs/play/index.html
+
+<span class="c"># regenerate the assets in this repo</span>
+python3 scripts/badges.py
+bash scripts/shot.sh . app</pre>
+      <pre class="tree"><b>docs/index.html</b>       this page
+<b>docs/play/</b>            the app
+  index.html            markup only
+  assets/css/app.css    the design system
+  assets/js/            config · data · store
+                        i18n · video · session
+                        ui · main
+  assets/i18n/          en · hi · gu
+  sw.js                 offline shell
+<b>scripts/</b>              badges and screenshots
+<b>BACKLOG.md</b>            what is next, and what is refused</pre>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong>CoreFit MD</strong> — part of the <a href="https://drsamonline.github.io/">drsamonline</a> estate.
+      MIT licensed. Video embeds belong to their creators.
+    </div>
+    <div class="stamp">v2.1.0 · build 2026-11-02</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- theme ---------- */
+  var root = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  var label = document.getElementById('themeLabel');
+  var order = ['auto', 'light', 'dark'];
+  function stored() { try { return localStorage.getItem('corefit.landing.theme') || 'auto'; } catch (e) { return 'auto'; } }
+  function apply(t) {
+    var dark = t === 'dark' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    label.textContent = t.charAt(0).toUpperCase() + t.slice(1);
+  }
+  apply(stored());
+  btn.addEventListener('click', function () {
+    var next = order[(order.indexOf(stored()) + 1) % order.length];
+    try { localStorage.setItem('corefit.landing.theme', next); } catch (e) {}
+    apply(next);
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { apply(stored()); });
+
+  /* ---------- live demo ---------- */
+  var frame = document.getElementById('frame');
+  var device = document.getElementById('device');
+  var guide = document.getElementById('guide');
+  var loaded = false;
+
+  function reveal() { if (!loaded) { loaded = true; device.classList.add('live'); } }
+
+  // Only reveal the frame once it has actually painted; the poster behind it
+  // stays visible if the embed cannot load.
+  frame.addEventListener('load', function () {
+    try {
+      if (frame.contentDocument && frame.contentDocument.body && frame.contentDocument.body.children.length) reveal();
+      else setTimeout(reveal, 300);
+    } catch (e) { reveal(); }
+  });
+  if (location.protocol === 'file:') setTimeout(reveal, 1200);
+
+  guide.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-go]');
+    if (!b) return;
+    Array.prototype.forEach.call(guide.querySelectorAll('button'), function (x) {
+      x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+    });
+    var go = b.dataset.go;
+    frame.src = 'play/index.html' + (go.indexOf('?') === 0 ? go : go);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="CoreFit MD — a five-minute video-guided morning core routine with clip-accurate playback, streaks and session logging.">
+<meta name="theme-color" content="#f5f1e8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1412" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CoreFit MD">
+<title>CoreFit MD — Morning Core</title>
+<script>
+/* Resolve the theme before the first paint so there is no flash of the wrong one. */
+(function(){try{
+  var raw=localStorage.getItem('corefit.settings.v2');
+  var t=(raw?JSON.parse(raw).theme:null)||'auto';
+  var dark = t==='dark' || (t==='auto' && matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.setAttribute('data-theme', dark?'dark':'light');
+}catch(e){}})();
+</script>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preload" href="assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+
+<!-- icon sprite -->
+<svg class="sr" aria-hidden="true" focusable="false">
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3s4.5 4.2 4.5 8.2A4.5 4.5 0 0 1 12 15.7a4.5 4.5 0 0 1-4.5-4.5C7.5 7.2 12 3 12 3z"/><path d="M12 21c3.6 0 6.5-2.4 6.5-5.6 0-1.4-.5-2.7-1.3-3.9M12 21c-3.6 0-6.5-2.4-6.5-5.6 0-1.4.5-2.7 1.3-3.9"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14" stroke-width="2.6"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10.5h17"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2 2 0 0 1 6 3.5h13v17H6a2 2 0 0 0-2 2z"/><path d="M4 19.5A2 2 0 0 1 6 17.5h13"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke-width="2"/></symbol>
+  <symbol id="i-skip" viewBox="0 0 24 24"><path d="M6 5.5v13l9-6.5-9-6.5z" fill="currentColor" stroke="none"/><path d="M18 5v14" stroke-width="2.2"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5V10H9"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5h3.5L13 5v14L7.5 14.5H4z"/><path d="M16.5 9a4.2 4.2 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5h3.5L13 5v14L7.5 14.5H4z"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M4.4 7.6l2 1.2M17.6 15.2l2 1.2M4.4 16.4l2-1.2M17.6 8.8l2-1.2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.8l4.6 4.4L19 6.5" stroke-width="2.4"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 1.8"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M8 5v14M16 5v14M3 12h18"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v10M8 10.5l4 4 4-4M4.5 19.5h15"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V5M8 8.5l4-4 4 4M4.5 19.5h15"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="7" rx="2"/><path d="M7 14h10v6H7z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="17.5" cy="6" r="2.6"/><circle cx="6.5" cy="12" r="2.6"/><circle cx="17.5" cy="18" r="2.6"/><path d="M9 10.7l6-3.3M9 13.3l6 3.3"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.3 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.3-3.6-8.5S9.6 5.9 12 3.5z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
+  <symbol id="i-theme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V6.5a2 2 0 1 1 4 0V12"/><path d="M13 10.5a2 2 0 1 1 4 0V15a6 6 0 0 1-6 6h-1a6 6 0 0 1-5.2-3"/></symbol>
+</svg>
+
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark"><svg class="ic" viewBox="0 0 24 24"><path d="M6.5 7.5v9M17.5 7.5v9M6.5 12h11" stroke-width="2.4"/><path d="M3.5 9.5v5M20.5 9.5v5"/></svg></span>
+      <span class="brand-text"><strong>CoreFit MD</strong><small id="brandMeta">—</small></span>
+    </div>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="btnLang" aria-label="Language"><svg class="ic"><use href="#i-globe"/></svg><span id="langTag">EN</span></button>
+      <button class="icon-btn" id="btnTheme" aria-label="Colour theme"><svg class="ic"><use href="#i-theme"/></svg></button>
+      <button class="icon-btn" id="btnSettingsTop" aria-label="Session settings"><svg class="ic"><use href="#i-gear"/></svg></button>
+      <button class="streak" id="streakPill" aria-label="Current streak">
+        <svg class="ic"><use href="#i-flame"/></svg><b id="streakNum">0</b><span id="streakWord">days</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="banner" id="banner" hidden>
+    <svg class="ic"><use href="#i-target"/></svg><span id="bannerText"></span>
+  </div>
+
+  <nav class="segmented" role="tablist" aria-label="Sections">
+    <button role="tab" aria-selected="true" data-view="today"><svg class="ic"><use href="#i-sun"/></svg><span data-i18n="nav.today">Today</span></button>
+    <button role="tab" aria-selected="false" data-view="progress"><svg class="ic"><use href="#i-cal"/></svg><span data-i18n="nav.progress">Progress</span></button>
+    <button role="tab" aria-selected="false" data-view="library"><svg class="ic"><use href="#i-book"/></svg><span data-i18n="nav.library">Library</span></button>
+  </nav>
+
+  <main>
+    <!-- ================= TODAY ================= -->
+    <section class="view active" id="view-today" role="tabpanel">
+      <div class="hero" id="hero">
+        <div class="hero-top">
+          <span class="eyebrow" id="todayDate">—</span>
+          <span class="status-chip" id="heroStatus" data-i18n="hero.ready">Ready</span>
+        </div>
+        <h2 class="hero-title" id="heroTitle"></h2>
+        <p class="hero-sub" id="heroSub"></p>
+        <button class="btn btn-hero" id="btnStart"><svg class="ic"><use href="#i-play"/></svg><span id="btnStartText" data-i18n="btn.start">Start session</span></button>
+        <div class="hero-resume" id="heroResume" hidden>
+          <button class="btn btn-hero" id="btnResume"><svg class="ic"><use href="#i-play"/></svg><span data-i18n="btn.resume">Resume</span></button>
+          <button class="btn btn-hero secondary" id="btnDiscard" data-i18n="btn.discard">Discard</button>
+        </div>
+        <div class="hero-foot">
+          <span><svg class="ic"><use href="#i-clock"/></svg><span id="footTime">—</span></span>
+          <span><svg class="ic"><use href="#i-target"/></svg><span id="footMoves">—</span></span>
+          <span><svg class="ic"><use href="#i-film"/></svg><span id="footClip">0:30</span></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span class="label" data-i18n="label.plan">Session plan</span>
+          <span class="label dim" id="planTotal"></span>
+        </div>
+        <ol class="plan" id="planList"></ol>
+      </div>
+
+      <div class="card program-card">
+        <div class="card-head">
+          <span class="label" data-i18n="label.program">Programme</span>
+          <span class="label dim" id="programWeek">Week 1</span>
+        </div>
+        <div class="program-body">
+          <div class="program-meta"><b id="programLabel">Foundation</b><small id="programSets"></small></div>
+          <div class="goal-ring" id="goalRing">
+            <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" class="ring-bg"/><circle cx="22" cy="22" r="18" class="ring-fg" id="goalArc"/></svg>
+            <span id="goalCount">0/3</span>
+          </div>
+        </div>
+        <div class="program-bar"><i id="programBar"></i></div>
+        <p class="hint" id="programHint"></p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b id="sTotal">0</b><span data-i18n="label.sessions">Sessions</span></div>
+        <div class="stat"><b id="sStreak">0</b><span data-i18n="label.beststreak">Best streak</span></div>
+        <div class="stat"><b id="sMonth">0</b><span data-i18n="label.month">This month</span></div>
+      </div>
+    </section>
+
+    <!-- ================= PROGRESS ================= -->
+    <section class="view" id="view-progress" role="tabpanel">
+      <div class="card">
+        <div class="cal-month"><b id="calTitle">—</b><span class="label dim" id="calCount"></span></div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="legend">
+          <span><i class="a"></i><span data-i18n="cal.legend.done">Completed</span></span>
+          <span><i class="b"></i><span data-i18n="cal.legend.today">Today</span></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="label" data-i18n="label.week">Last 7 days</span><span class="label dim" id="weekTotal"></span></div>
+        <div class="week" id="weekChart"></div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b id="pTotal">0</b><span data-i18n="label.alltime">All-time</span></div>
+        <div class="stat"><b id="pMin">0</b><span data-i18n="label.minutes">Minutes</span></div>
+        <div class="stat"><b id="pCons">0%</b><span data-i18n="label.consistency">30-day consistency</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="label" data-i18n="label.export">Export and backup</span></div>
+        <div class="btn-grid">
+          <button class="btn btn-ghost sm" id="btnCsv"><svg class="ic"><use href="#i-download"/></svg><span data-i18n="progress.csv">Download CSV</span></button>
+          <button class="btn btn-ghost sm" id="btnJson"><svg class="ic"><use href="#i-download"/></svg><span data-i18n="progress.json">Backup as JSON</span></button>
+          <button class="btn btn-ghost sm" id="btnImport"><svg class="ic"><use href="#i-upload"/></svg><span data-i18n="progress.import">Restore backup</span></button>
+          <button class="btn btn-ghost sm" id="btnPrint"><svg class="ic"><use href="#i-print"/></svg><span data-i18n="progress.pdf">Print summary</span></button>
+          <button class="btn btn-ghost sm" id="btnShareCard"><svg class="ic"><use href="#i-share"/></svg><span data-i18n="progress.share">Share streak card</span></button>
+          <button class="btn btn-ghost sm" id="btnSettings"><svg class="ic"><use href="#i-gear"/></svg><span data-i18n="label.settings">Session settings</span></button>
+        </div>
+        <input type="file" id="fileImport" accept="application/json,.json" hidden>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="label" data-i18n="label.goal">Weekly goal</span><span class="label dim" id="goalHint2"></span></div>
+        <div class="goal-bars" id="goalBars"></div>
+      </div>
+    </section>
+
+    <!-- ================= LIBRARY ================= -->
+    <section class="view" id="view-library" role="tabpanel">
+      <div class="card">
+        <div class="card-head"><span class="label" data-i18n="label.library">Exercise library</span><span class="label dim" id="libCount"></span></div>
+        <p class="hint" data-i18n="clip.hint">The workout loops only this window, so every set opens on the demonstration itself.</p>
+      </div>
+      <div class="lib" id="libList"></div>
+    </section>
+  </main>
+
+  <p class="footnote" data-i18n="foot.note">Built for a five-minute morning habit. Video needs a connection.</p>
+  <p class="footnote build" id="buildStamp"></p>
+</div>
+
+<!-- ================= WORKOUT STAGE ================= -->
+<div class="stage" id="stage" role="dialog" aria-modal="true" aria-label="Workout in progress">
+  <div class="stage-top">
+    <button class="icon-btn" id="btnQuit" data-i18n-aria="a11y.quit" aria-label="End workout"><svg class="ic"><use href="#i-close"/></svg></button>
+    <div class="phase" id="phaseChip"><span class="dot"></span><span id="phaseText">—</span></div>
+    <button class="icon-btn" id="btnSound" data-i18n-aria="a11y.sound" aria-label="Toggle video sound"><svg class="ic"><use href="#i-mute"/></svg></button>
+  </div>
+
+  <div id="workoutBody" class="workout-body">
+    <div class="video-card" id="videoCard">
+      <div class="video-host" id="videoHost"></div>
+      <div class="video-fallback" id="videoFallback">
+        <p id="fallbackText">Video unavailable here.</p>
+        <a id="fallbackLink" href="#" target="_blank" rel="noopener">Open on YouTube ↗</a>
+      </div>
+      <div class="video-noclip" id="noClip"><span id="noClipCue"></span></div>
+      <div class="video-badge"><svg class="ic"><use href="#i-film"/></svg><span id="videoBadgeText">0:30</span></div>
+    </div>
+
+    <div class="stage-main">
+      <div class="timer-row">
+        <div class="timer"><span id="timeLeft">0</span><small id="timerUnit" data-i18n="label.sec">sec</small></div>
+        <div class="timer-side">
+          <div class="ex-count" id="exCount">—</div>
+          <div class="ex-name" id="exName">—</div>
+          <div class="ex-next" id="exNext"></div>
+        </div>
+      </div>
+
+      <div class="segbar"><i id="segFill"></i></div>
+      <div class="rail" id="rail"></div>
+      <p class="cue" id="cueLine"></p>
+
+      <button class="rep-tap" id="btnRepTap" hidden>
+        <svg class="ic"><use href="#i-tap"/></svg>
+        <span id="repText">0 / 12</span>
+      </button>
+
+      <div class="controls">
+        <button class="ctl" id="btnMinus" data-i18n-aria="btn.minus" aria-label="Minus ten"><svg class="ic"><use href="#i-minus"/></svg><span>−10s</span></button>
+        <button class="ctl" id="btnRestart"><svg class="ic"><use href="#i-reset"/></svg><span data-i18n="btn.restart">Restart</span></button>
+        <button class="ctl-main" id="btnPause" data-i18n-aria="a11y.pause" aria-label="Pause"><svg class="ic"><use href="#i-pause"/></svg></button>
+        <button class="ctl" id="btnSkip"><svg class="ic"><use href="#i-skip"/></svg><span data-i18n="btn.skip">Skip</span></button>
+        <button class="ctl" id="btnPlus" data-i18n-aria="btn.plus" aria-label="Plus ten"><svg class="ic"><use href="#i-plus"/></svg><span>+10s</span></button>
+      </div>
+
+      <details class="steps" id="stepsBox">
+        <summary data-i18n="label.formcues">Form cues</summary>
+        <ol id="stepsList"></ol>
+      </details>
+    </div>
+    <div class="stage-foot"><span id="sessionLeft"></span></div>
+  </div>
+
+  <div class="done-view" id="doneView">
+    <div class="done-ring"><svg class="ic"><use href="#i-check"/></svg></div>
+    <h2 id="doneTitle">Session complete</h2>
+    <p id="doneLine"></p>
+    <div class="done-stats">
+      <div><b id="doneStreak">0</b><span data-i18n="label.streak">Day streak</span></div>
+      <div><b id="doneTime">0:00</b><span data-i18n="label.time">Time</span></div>
+      <div><b id="doneMoves">0</b><span data-i18n="label.moves">moves</span></div>
+    </div>
+    <button class="btn btn-primary" id="btnDone" style="max-width:280px"><svg class="ic"><use href="#i-check"/></svg><span data-i18n="btn.save">Save</span></button>
+  </div>
+</div>
+
+<!-- ================= CLIP SHEET ================= -->
+<div class="sheet" id="clipSheet" role="dialog" aria-modal="true" aria-label="Clip settings">
+  <div class="sheet-card">
+    <div class="sheet-head">
+      <div><h3 id="clipName">—</h3><p id="clipMeta"></p></div>
+      <button class="icon-btn sheet-close" data-close="clipSheet" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="video-card" style="aspect-ratio:16/9">
+      <div class="video-host" id="clipHost"></div>
+      <div class="video-badge"><svg class="ic"><use href="#i-film"/></svg><span id="clipBadge">0:30</span></div>
+    </div>
+    <div class="trim-grid">
+      <div class="field">
+        <label data-i18n="clip.start">Clip starts at</label>
+        <div class="field-row"><input type="number" id="trimStart" min="0" max="3600" step="1" inputmode="numeric"><span class="unit">s</span><button class="mini" id="capStart" data-i18n="clip.now">now</button></div>
+      </div>
+      <div class="field">
+        <label data-i18n="clip.end">Clip ends at</label>
+        <div class="field-row"><input type="number" id="trimEnd" min="1" max="3600" step="1" inputmode="numeric"><span class="unit">s</span><button class="mini" id="capEnd" data-i18n="clip.now">now</button></div>
+      </div>
+    </div>
+    <div class="trim-grid">
+      <div class="field">
+        <label data-i18n="clip.mode">Timing</label>
+        <div class="seg-mini" id="modeSwitch">
+          <button data-mode="time" data-i18n="clip.mode.time">Timed</button>
+          <button data-mode="reps" data-i18n="clip.mode.reps">Reps</button>
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="clip.reps">Rep target</label>
+        <div class="field-row"><input type="number" id="repTarget" min="1" max="99" step="1" inputmode="numeric"><span class="unit" data-i18n="label.reps">reps</span></div>
+      </div>
+    </div>
+    <div class="field">
+      <label data-i18n="clip.backup">Backup video ID</label>
+      <div class="field-row"><input type="text" id="backupId" class="txt" data-i18n-ph="clip.backup.ph" placeholder="YouTube ID if the main one dies"></div>
+    </div>
+    <div class="mods">
+      <p><b data-i18n="clip.regression">Easier</b><span id="modEasier"></span></p>
+      <p><b data-i18n="clip.progression">Harder</b><span id="modHarder"></span></p>
+    </div>
+    <div class="row2">
+      <button class="btn btn-ghost" id="btnClipReset" data-i18n="clip.reset">Reset to 0:30</button>
+      <button class="btn btn-primary" id="btnClipSave" data-i18n="clip.save">Save clip</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SETTINGS SHEET ================= -->
+<div class="sheet" id="settingsSheet" role="dialog" aria-modal="true" aria-label="Settings">
+  <div class="sheet-card">
+    <div class="sheet-head">
+      <div><h3 data-i18n="set.title">Session settings</h3><p data-i18n="set.sub">Saved on this device</p></div>
+      <button class="icon-btn sheet-close" data-close="settingsSheet" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+    </div>
+    <div id="settingsList"></div>
+    <div class="set-row">
+      <div><span data-i18n="set.theme">Colour theme</span><small>Auto · light · dark</small></div>
+      <div class="seg-mini sm" id="themeSwitch">
+        <button data-theme="auto">Auto</button><button data-theme="light">Light</button><button data-theme="dark">Dark</button>
+      </div>
+    </div>
+    <div class="set-row">
+      <div><span data-i18n="set.speed">Playback speed</span><small>0.75× · 1× · 1.25×</small></div>
+      <div class="seg-mini sm" id="speedSwitch">
+        <button data-speed="0.75">0.75×</button><button data-speed="1">1×</button><button data-speed="1.25">1.25×</button>
+      </div>
+    </div>
+    <div class="set-row">
+      <div><span data-i18n="set.reminderTime">Reminder time</span><small id="reminderState"></small></div>
+      <input type="time" id="reminderTime" class="time-input">
+    </div>
+    <div class="set-row">
+      <div><span data-i18n="set.lang">Language</span><small>English · हिन्दी · ગુજરાતી</small></div>
+      <div class="seg-mini sm" id="langSwitch">
+        <button data-lang="en">EN</button><button data-lang="hi">हि</button><button data-lang="gu">ગુ</button>
+      </div>
+    </div>
+    <p class="hint" style="margin-top:12px" id="settingsNote"></p>
+  </div>
+</div>
+
+<!-- ================= POST-SESSION SHEET ================= -->
+<div class="sheet" id="postSheet" role="dialog" aria-modal="true" aria-label="Session feedback">
+  <div class="sheet-card">
+    <div class="sheet-head">
+      <div><h3 data-i18n="post.title">How did that feel?</h3><p data-i18n="post.sub">One tap. It tunes the next session.</p></div>
+      <button class="icon-btn sheet-close" data-close="postSheet" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="rpe" id="rpeChips"></div>
+    <p class="rpe-label" id="rpeLabel"></p>
+    <div class="set-row">
+      <div><span data-i18n="post.pain">I felt pain</span><small id="painHint"></small></div>
+      <button class="switch" id="painSwitch" role="switch" aria-checked="false"></button>
+    </div>
+    <div class="field">
+      <label data-i18n="post.note">Note for yourself</label>
+      <div class="field-row"><input type="text" class="txt" id="postNote" data-i18n-ph="post.note.ph" placeholder="Anything worth remembering"></div>
+    </div>
+    <button class="btn btn-primary" id="btnPostSave" data-i18n="post.save">Save session</button>
+  </div>
+</div>
+
+<!-- ================= SCREENING ================= -->
+<div class="modal" id="screenModal" role="dialog" aria-modal="true" aria-label="Safety screening">
+  <div class="modal-card">
+    <h3 data-i18n="screen.title">Before the first session</h3>
+    <p class="hint" data-i18n="screen.sub">Tick anything that applies. The plan adapts.</p>
+    <div id="screenList" class="screen-list"></div>
+    <p class="hint" data-i18n="screen.note">This is a training aid, not medical advice. Stop if a move hurts.</p>
+    <button class="btn btn-primary" id="btnScreenSave" data-i18n="screen.ack">Save and continue</button>
+  </div>
+</div>
+
+<!-- ================= SHARE CARD ================= -->
+<div class="modal" id="shareModal" role="dialog" aria-modal="true" aria-label="Streak card">
+  <div class="modal-card">
+    <h3 id="shareTitle">Streak card</h3>
+    <canvas id="shareCanvas" width="1080" height="1350"></canvas>
+    <div class="row2">
+      <button class="btn btn-ghost" data-close="shareModal" data-i18n="btn.close">Close</button>
+      <button class="btn btn-primary" id="btnShareSave" data-i18n="progress.share">Share streak card</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/i18n/strings.js" defer></script>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/data.js" defer></script>
+<script src="assets/js/store.js" defer></script>
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/video.js" defer></script>
+<script src="assets/js/session.js" defer></script>
+<script src="assets/js/ui.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
