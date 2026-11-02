@@ -57,6 +57,17 @@ The figures are original drawings, not frames from the videos: the clips are oth
 work, so they are embedded and credited — the channel name sits under the player and every
 source is listed in the app's *Sources and credits* sheet. Nothing is copied into the repo.
 
+## Generated assets
+
+`PROMPTS.md` is the brief for replacing the figures with AI-generated stills and video loops:
+a shared style block, a character-lock strategy, ten per-move prompts (image and motion),
+negative prompts, an acceptance checklist, and the watermark spec.
+
+Drop the results into `docs/play/assets/media/` and run `python3 scripts/media_manifest.py`.
+The app prefers them over the figures everywhere, per exercise, falling back for anything
+missing — so a partial set is fine. `scripts/watermark.py` stamps the CoreFit MD mark onto
+stills (Pillow) and clips (ffmpeg).
+
 ## What it does
 
 | | |

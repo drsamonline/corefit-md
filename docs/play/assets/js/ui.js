@@ -191,9 +191,11 @@
         var ex = CF.EXERCISES[i], c = S.clipFor(ex);
         var tag = (ex.mode === 'reps' && ex.reps) ? '<span class="lib-tag">' + ex.reps + ' ' + CF.t('label.reps') + '</span>' : '';
         var hasVideo = !!ex.videoId;
+        var m = CF.Media.get(ex.id);
+        var thumb = (m && m.poster) ? m.poster : (m && m.type === 'image' ? m.src : ex.demo);
         html += '<button class="lib-card" data-id="' + ex.id + '">' +
           '<span class="lib-thumb">' +
-            '<img src="' + (ex.demo || '') + '" alt="" loading="lazy" decoding="async">' +
+            '<img src="' + (thumb || '') + '" alt="" loading="lazy" decoding="async">' +
             (hasVideo ? '<span class="lib-play"><svg class="ic"><use href="#i-play"/></svg></span>' : '') +
             '<span class="lib-badge">' + (hasVideo ? fmtSec(c.start) + '–' + fmtSec(c.end) : CF.t('demo.figures')) + '</span>' +
           '</span>' +

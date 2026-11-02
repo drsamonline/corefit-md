@@ -28,16 +28,19 @@ check support rather than take my word for it.
 | 1.11 | **Sources and credits sheet**, channel credited under the player | Embedded work credited, never copied | S | med | shipped |
 | 1.12 | **Clips / Figures-only switch in the library** | A visible way to force the offline layer and check the figures | S | high | shipped |
 | 1.13 | **Library sheet opens without a video** — figure, native link, and a search for a better clip | Tapping a card used to open a black rectangle when the embed was blocked | S | high | shipped |
-| 1.14 | **Two-tone figure illustration** — far limbs dimmed, moving limb in signal, ground shadow, motion arc | The first pass read as stick figures; this reads as an illustration | M | high | shipped |
-| 1.15 | **Drag handles on a scrubber** for the clip window | Typing seconds is guesswork; dragging is judgement | M | high | next |
-| 1.16 | **Frame-step ◀ ▶ buttons** in the clip editor | Finding the exact frame the demo starts on | S | med | next |
-| 1.17 | **Per-side clip windows** for unilateral moves | Bird Dog's left and right demos may sit at different times | S | med | next |
-| 1.18 | **Offline video from the user's own files** — file picker → IndexedDB → `blob:` URL | Real offline video with no hosting: the file never leaves the device | L | high | next |
-| 1.19 | **Picture-in-picture** (`requestPictureInPicture`) | Float the demo over the plan list or another tab | M | med | later |
-| 1.20 | **Thumbnail from the clip's own frame** (`mq1.jpg`, or canvas capture for MP4) | The library card currently shows the video's poster, not the demo | S | low | later |
-| 1.21 | **Cue-aware audio track** — Web Speech reads the step list across the set | Screen-off sessions become possible without video | M | med | later |
-| 1.22 | **Orientation lock** during a session (`screen.orientation.lock`) | Stops the layout flipping mid-plank | S | low | idea |
-| 1.23 | **Clip health check** on first run — probe each video, warn on failure | Catches a dead embed before you are on the floor | S | med | idea |
+| 1.14 | **Generated-media layer** — drop files in `assets/media/`, one script, app prefers them | Replaces the figures with your own AI assets, no code change | M | high | shipped |
+| 1.15 | **Prompt pack** (`PROMPTS.md`) — style block, character lock, ten image + motion prompts, negatives, acceptance checklist | Generation is only as good as the brief | M | high | shipped |
+| 1.16 | **Watermark script** — Pillow for stills, ffmpeg for clips | Your assets, your mark, burned in rather than wished for | S | high | shipped |
+| 1.17 | **Two-tone figure illustration** — far limbs dimmed, moving limb in signal, ground shadow, motion arc | The first pass read as stick figures; this reads as an illustration | M | high | shipped |
+| 1.18 | **Drag handles on a scrubber** for the clip window | Typing seconds is guesswork; dragging is judgement | M | high | next |
+| 1.19 | **Frame-step ◀ ▶ buttons** in the clip editor | Finding the exact frame the demo starts on | S | med | next |
+| 1.20 | **Per-side clip windows** for unilateral moves | Bird Dog's left and right demos may sit at different times | S | med | next |
+| 1.21 | **Offline video from the user's own files** — file picker → IndexedDB → `blob:` URL | Real offline video with no hosting: the file never leaves the device | L | high | next |
+| 1.22 | **Picture-in-picture** (`requestPictureInPicture`) | Float the demo over the plan list or another tab | M | med | later |
+| 1.23 | **Thumbnail from the clip's own frame** (`mq1.jpg`, or canvas capture for MP4) | The library card currently shows the video's poster, not the demo | S | low | later |
+| 1.24 | **Cue-aware audio track** — Web Speech reads the step list across the set | Screen-off sessions become possible without video | M | med | later |
+| 1.25 | **Orientation lock** during a session (`screen.orientation.lock`) | Stops the layout flipping mid-plank | S | low | idea |
+| 1.26 | **Clip health check** on first run — probe each video, warn on failure | Catches a dead embed before you are on the floor | S | med | idea |
 
 ## 02 · Session engine
 

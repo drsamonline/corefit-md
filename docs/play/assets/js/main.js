@@ -104,10 +104,14 @@
   function showDemo(opts) {
     opts = opts || {};
     var fb = $('videoFallback');
-    var img = $('demoImg');
+    var host = $('demoMedia');
     if (!opts.src) { hideDemo(); return; }
-    if (img.getAttribute('src') !== opts.src) img.setAttribute('src', opts.src);
-    img.alt = opts.label || '';
+    var type = opts.type || 'image';
+    var key = type + '|' + opts.src;
+    if (host.dataset.key !== key) {
+      host.innerHTML = CF.Media.markup(opts.src, type, opts.label || '', 'demo-media-el');
+      host.dataset.key = key;
+    }
     $('demoLabel').textContent = opts.label || CF.t('demo.offline');
     var credit = $('demoCredit');
     if (opts.creditUrl) {
@@ -127,10 +131,13 @@
   }
 
   function demoFor(ex) {
+    var src = CF.Media.sourceFor(ex);
     return {
-      src: ex.demo,
+      src: src.src,
+      type: src.type,
       label: CF.pick(ex.name),
-      creditUrl: ex.credit && ex.credit.url,
+      // generated media is ours; a YouTube clip keeps its channel credit
+      creditUrl: src.type === 'image' && src.src === ex.demo ? (ex.credit && ex.credit.url) : null,
       creditLabel: ex.credit && ex.credit.author
     };
   }
@@ -161,7 +168,8 @@
       $('exNext').textContent = '';
       cue = CF.pick(block.cues[0]);
       if (player) player.pause();
-      showDemo({ src: block.demo, label: CF.t('phase.' + seg.k) });
+      showDemo(Object.assign({ src: block.demo, type: 'image', label: CF.t('phase.' + seg.k) },
+        CF.Media.get(seg.k) ? { src: CF.Media.get(seg.k).src, type: CF.Media.get(seg.k).type } : {}));
       $('btnRepTap').hidden = true;
     } else if (seg.k === 'work') {
       $('exCount').textContent = (seg.ex + 1) + ' / ' + CF.EXERCISES.length + (seg.side ? ' · ' + CF.t(seg.side === 1 ? 'stage.sideL' : 'stage.sideR') : '');
@@ -193,10 +201,13 @@
       cue = 'Roll down, breathe in through the nose, reset the brace.';
       $('btnRepTap').hidden = true;
       if (up) {
-        showDemo({ src: up.demo, label: CF.t('stage.upnext') + ' · ' + CF.pick(up.name),
-                   creditUrl: up.credit && up.credit.url, creditLabel: up.credit && up.credit.author });
+        var upSrc = CF.Media.sourceFor(up);
+        showDemo({ src: upSrc.src, type: upSrc.type,
+                   label: CF.t('stage.upnext') + ' · ' + CF.pick(up.name),
+                   creditUrl: upSrc.type === 'image' && upSrc.src === up.demo ? (up.credit && up.credit.url) : null,
+                   creditLabel: up.credit && up.credit.author });
       } else {
-        showDemo({ src: CF.COOLDOWN.demo, label: CF.t('phase.cooldown') });
+        showDemo({ src: CF.COOLDOWN.demo, type: 'image', label: CF.t('phase.cooldown') });
       }
       if (player) {
         player.pause();
@@ -382,9 +393,13 @@
     clipEx = ex;
     var c = S.clipFor(ex);
     var useVideo = !!ex.videoId && videoWanted();
-    $('clipDemo').classList.toggle('on', !useVideo);
-    $('clipDemo').setAttribute('src', ex.demo || '');
-    $('clipDemo').alt = CF.pick(ex.name);
+    var media = CF.Media.sourceFor(ex);
+    $('clipMedia').classList.toggle('on', !useVideo);
+    if (!useVideo) {
+      $('clipMedia').innerHTML = CF.Media.markup(media.src, media.type, CF.pick(ex.name), 'demo-media-el');
+    } else {
+      $('clipMedia').innerHTML = '';
+    }
     $('clipOpen').href = ex.videoId
       ? 'https://www.youtube.com/watch?v=' + ex.videoId + '&t=' + Math.floor(c.start) + 's'
       : 'https://www.youtube.com/results?search_query=' + encodeURIComponent(CF.pick(ex.name) + ' exercise how to');
@@ -423,7 +438,12 @@
     clipPlayer = CF.Video.create($('clipHost'), {
       videoId: ex.videoId, backupIds: ex.backupIds || [],
       start: c.start, end: c.end, muted: !S.get('videoSound'),
-      onError: function () { $('clipDemo').classList.add('on'); $('clipHost').innerHTML = ''; }
+      onError: function () {
+        var m = CF.Media.sourceFor(ex);
+        $('clipMedia').innerHTML = CF.Media.markup(m.src, m.type, CF.pick(ex.name), 'demo-media-el');
+        $('clipMedia').classList.add('on');
+        $('clipHost').innerHTML = '';
+      }
     });
     clipPlayer.play();
   }
@@ -492,6 +512,7 @@
   function boot() {
     S.load();
     loadOverrides();
+    CF.Media.load();   // synchronous: the manifest is a plain script
     try {
       var q = new URLSearchParams(location.search).get('lang');
       if (q && CF.STRINGS[q]) S.set('lang', q);

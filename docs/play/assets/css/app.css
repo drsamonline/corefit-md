@@ -231,7 +231,7 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
 .video-badge svg{width:11px;height:11px}
 .video-fallback{position:absolute;inset:0;z-index:4;display:none;background:#07100d}
 .video-fallback.on{display:block}
-.video-fallback img{width:100%;height:100%;object-fit:contain;display:block}
+.video-fallback img,.video-fallback video{width:100%;height:100%;object-fit:contain;display:block;background:#07100d}
 .demo-cap{
   position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:10px;
   padding:7px 9px;background:linear-gradient(180deg,transparent,rgba(4,14,11,.86) 55%);
@@ -241,8 +241,9 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
   border-bottom:1px solid rgba(155,231,205,.45);padding-bottom:1px;white-space:nowrap}
 .demo-cap a[hidden]{display:none}
 
-.clip-demo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#07100d;display:none}
-.clip-demo.on{display:block}
+.clip-media{position:absolute;inset:0;display:none;background:#07100d}
+.clip-media.on{display:block}
+.clip-media img,.clip-media video{width:100%;height:100%;object-fit:contain;display:block}
 .lib-mode{display:flex;align-items:center;gap:10px;margin-bottom:9px}
 .lib-mode .seg-mini{flex:0 0 62%}
 .lib-mode .hint{flex:1;min-width:0}
