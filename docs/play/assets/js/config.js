@@ -4,7 +4,7 @@
   'use strict';
 
   CF.CONFIG = {
-    VERSION: '2.7.0',
+    VERSION: '2.8.0',
     BUILD: '2026-11-02',
     KEYS: {
       history:  'corefit.history.v2',

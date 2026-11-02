@@ -552,6 +552,8 @@
     UI.switchView(['today', 'progress', 'library'].indexOf(deep) >= 0 ? deep : 'today');
     var stamp = $('buildStamp');
     if (stamp) stamp.textContent = 'v' + C.VERSION + ' · build ' + C.BUILD;
+    var aboutV = $('aboutVersion');
+    if (aboutV) aboutV.textContent = 'v' + C.VERSION + ' · build ' + C.BUILD;
 
     // first-run screening
     if (!S.profile.screened) {
@@ -678,12 +680,15 @@
     });
 
     /* library */
-    $('libList').addEventListener('click', function (e) {
+    function libraryClick(e) {
       var card = e.target.closest('.lib-card');
-      if (!card) return;
-      var ex = CF.EXERCISES.filter(function (x) { return x.id === card.dataset.id; })[0];
+      if (!card || !card.dataset.id) return;
+      var all = CF.EXERCISES.concat(CF.EXTRA_MOVES || []);
+      var ex = all.filter(function (x) { return x.id === card.dataset.id; })[0];
       if (ex) openClip(ex);
-    });
+    }
+    $('libList').addEventListener('click', libraryClick);
+    $('extraList').addEventListener('click', libraryClick);
     $('modeSwitch').addEventListener('click', function (e) {
       var b = e.target.closest('button[data-mode]');
       if (b) setMode(b.dataset.mode);

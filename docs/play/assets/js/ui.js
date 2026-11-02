@@ -234,13 +234,19 @@
         var ex = list[i];
         var m = CF.Media.get(ex.id);
         var thumb = (m && m.poster) ? m.poster : (m && m.type === 'image' ? m.src : ex.demo);
-        html += '<div class="lib-card static">' +
+        var c = S.clipFor(ex);
+        var badge = ex.videoId && S.get('videoSource') === 'youtube'
+          ? fmtSec(c.start) + '–' + fmtSec(c.end) : 'STILL';
+        html += '<button class="lib-card" data-id="' + ex.id + '">' +
           '<span class="lib-thumb">' +
             '<img src="' + thumb + '" alt="" loading="lazy" decoding="async">' +
+            (ex.videoId ? '<span class="lib-play"><svg class="ic"><use href="#i-play"/></svg></span>' : '') +
+            '<span class="lib-badge">' + badge + '</span>' +
           '</span>' +
           '<span class="lib-body"><b>' + CF.pick(ex.name) + '</b>' +
           '<small>' + CF.pick(ex.tag) + ' · ' + CF.pick(ex.cue) + '</small></span>' +
-        '</div>';
+          '<span class="lib-go"><svg class="ic" style="width:16px;height:16px"><use href="#i-play"/></svg></span>' +
+        '</button>';
       }
       $('extraList').innerHTML = html;
     },

@@ -146,3 +146,16 @@ BACKLOG.md                 everything next that needs no server — and what is 
 ## Licence
 
 MIT — see `LICENSE`. Video embeds belong to their creators.
+
+---
+
+## Author
+
+**Dr Sohil Momin** — [@drsamonline](https://github.com/drsamonline)
+
+Built as a personal morning routine and published so it can be forked. The clinical
+screening, contraindication flags and regression notes are written from a doctor's
+viewpoint, not scraped from a fitness blog; the training content is ordinary core work
+anyone can do on a mat.
+
+Not medical advice. If a movement hurts, stop and see someone qualified.

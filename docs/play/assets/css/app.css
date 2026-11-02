@@ -435,3 +435,15 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
   .stage-foot{display:none}
   .steps{display:none}
 }
+
+/* author / about block in settings */
+.about{display:flex;gap:12px;align-items:flex-start;margin-top:18px;padding:14px;border-radius:var(--radius-sm);
+  background:var(--surface-2);border:1px solid var(--line-2)}
+.about-mark{width:34px;height:34px;border-radius:10px;background:var(--pine);color:#f2fffa;display:grid;place-items:center;flex-shrink:0}
+.about-mark .ic{width:18px;height:18px}
+.about b{display:block;font-size:.9rem;color:var(--ink);margin-bottom:2px}
+.about small{display:block;font-size:.72rem;color:var(--ink-3);line-height:1.5}
+.about a{color:var(--pine-2);text-decoration:none}
+.about a:hover{text-decoration:underline}
+.footnote.author{margin-top:2px}
+.footnote.author a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line-3)}

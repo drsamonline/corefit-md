@@ -152,7 +152,9 @@
     {
       id: 'sideplank',
       name: { en: 'Side Plank', hi: 'साइड प्लैंक', gu: 'સાઇડ પ્લાંક' },
-      videoId: null, backupIds: [],
+      videoId: 'XeN4pEZZJNI', backupIds: ['rCxF2nG9vQ0'],
+      clip: { start: 30, end: 55 },
+      credit: { title: 'How To Do A Side Plank | The Right Way', author: 'Well+Good', url: 'https://www.youtube.com/watch?v=XeN4pEZZJNI&t=30s' },
       demo: 'assets/demo/sideplank.svg',
       work: 30, rest: 10, mode: 'time', reps: 0, unilateral: true,
       tag: { en: 'Anti-rotation', hi: 'एंटी-रोटेशन', gu: 'એન્ટી-રોટેશન' },
@@ -173,7 +175,9 @@
     {
       id: 'glutebridge',
       name: { en: 'Glute Bridge', hi: 'ग्लूट ब्रिज', gu: 'ગ્લૂટ બ્રિજ' },
-      videoId: null, backupIds: [],
+      videoId: 'wPM8icPu6H8', backupIds: ['PhTDzR0TpZs'],
+      clip: { start: 30, end: 55 },
+      credit: { title: 'How To Do A Glute Bridge | The Right Way', author: 'Well+Good', url: 'https://www.youtube.com/watch?v=wPM8icPu6H8&t=30s' },
       demo: 'assets/demo/glutebridge.svg',
       work: 40, rest: 10, mode: 'reps', reps: 12, unilateral: false,
       tag: { en: 'Hip extension', hi: 'हिप एक्सटेंशन', gu: 'હિપ એક્સ્ટેન્શન' },
@@ -194,7 +198,9 @@
     {
       id: 'superman',
       name: { en: 'Superman', hi: 'सुपरमैन', gu: 'સુપરમેન' },
-      videoId: null, backupIds: [],
+      videoId: 'cc6UVRS7PW4', backupIds: ['cZxtPxeR2H8'],
+      clip: { start: 30, end: 55 },
+      credit: { title: 'How to Do Superman Exercises', author: 'LIVESTRONG', url: 'https://www.youtube.com/watch?v=cc6UVRS7PW4&t=30s' },
       demo: 'assets/demo/superman.svg',
       work: 30, rest: 10, mode: 'time', reps: 0, unilateral: false,
       tag: { en: 'Spinal extension', hi: 'स्पाइनल एक्सटेंशन', gu: 'સ્પાઇનલ એક્સટેન્શન' },
