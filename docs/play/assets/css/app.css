@@ -441,9 +441,21 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
   background:var(--surface-2);border:1px solid var(--line-2)}
 .about-mark{width:34px;height:34px;border-radius:10px;background:var(--pine);color:#f2fffa;display:grid;place-items:center;flex-shrink:0}
 .about-mark .ic{width:18px;height:18px}
-.about b{display:block;font-size:.9rem;color:var(--ink);margin-bottom:2px}
+.about b{display:block;font-size:.9rem;color:var(--ink);margin-bottom:2px;word-spacing:.14em}
 .about small{display:block;font-size:.72rem;color:var(--ink-3);line-height:1.5}
 .about a{color:var(--pine-2);text-decoration:none}
 .about a:hover{text-decoration:underline}
 .footnote.author{margin-top:2px}
 .footnote.author a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line-3)}
+
+/* author signature on the Today view */
+.signature{display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px 14px;border-radius:var(--radius-sm);
+  background:var(--surface);border:1px solid var(--line);text-decoration:none;transition:border-color .18s,transform .18s}
+.signature:hover{border-color:var(--line-3)}
+.signature:active{transform:scale(.995)}
+.sig-mark{width:30px;height:30px;border-radius:9px;background:var(--pine);color:#f2fffa;display:grid;place-items:center;flex-shrink:0}
+.sig-mark .ic{width:16px;height:16px}
+.sig-text{display:flex;flex-direction:column;line-height:1.25}
+.sig-text small{font-family:var(--f-mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.sig-text b{font-size:.86rem;font-weight:700;color:var(--ink);word-spacing:.16em}
+.sig-handle{font-family:var(--f-mono);font-size:.68rem;color:var(--ink-3)}

@@ -1,6 +1,7 @@
 {
   "name": "CoreFit MD — Morning Core",
   "short_name": "CoreFit MD",
+  "author": { "name": "Dr Sohil Momin", "url": "https://github.com/drsamonline" },
   "description": "A five-minute video-guided morning core routine with clip-accurate playback, streaks and session logging.",
   "start_url": "./index.html",
   "scope": "./",
