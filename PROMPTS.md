@@ -110,24 +110,28 @@ flat lower back · no shoulder shrug.
 
 **Still**
 ```
-[STYLE] [CHARACTER] lying supine on the mat performing a dead bug: lower back
-pressed flat to the floor, arms reaching straight up to the ceiling with the
-wrists over the shoulders, hips and knees bent to 90 degrees with the shins
-parallel to the floor, the right arm and left leg extending slowly toward the
-floor without either touching it, ribs down, head resting, neutral neck.
-Camera three-quarter overhead from the feet end so the flat back and the
-opposite-limb pattern are both visible.
+[STYLE] [CHARACTER] lying flat on his back on the mat performing a dead bug.
+BOTH arms point straight up to the ceiling, wrists directly above the shoulders,
+hands in loose fists. BOTH knees are bent to 90 degrees and stacked over the hips
+with the shins parallel to the floor. Only ONE arm and the OPPOSITE leg move: the
+right arm lowers back over the head toward the floor and the left leg extends out
+and down, neither touching it. The other arm stays vertical and the other knee
+stays at 90 degrees. Lower back pressed flat into the mat with no gap, ribs down,
+head resting, neutral neck. Camera three-quarter overhead from the feet end.
 ```
 
 **Motion**
 ```
 Animate this still. The right arm and the left leg lower together toward the
 floor over two seconds, pause, then return to the start; the lower back stays
-glued to the mat throughout and the pelvis does not rock. Seamless 5-second loop.
+glued to the mat and the pelvis does not rock. Seamless 5-second loop.
 ```
 
-**Must show:** flat lumbar spine (no gap under the back) · 90/90 hip and knee · opposite arm
-and leg together · the other arm and leg still.
+**Must show:** both arms up at rest · 90/90 hip and knee · only the opposite pair
+moving · flat lumbar spine.
+
+**Failed first time because:** one arm rested on the floor. Keep both arms vertical —
+only one moves.
 
 ---
 
@@ -135,12 +139,13 @@ and leg together · the other arm and leg still.
 
 **Still**
 ```
-[STYLE] [CHARACTER] on all fours performing a bird dog: hands under the shoulders,
-knees under the hips, spine neutral and level, the right arm reaching forward and
-the left leg reaching back until both are level with the torso, hips square to
-the floor with no rotation and no arch in the lower back, gaze down, neck long.
-Camera three-quarter side view, low, so the level hips and the long line from
-fingertip to heel read clearly.
+[STYLE] [CHARACTER] on all fours in a tabletop position on the mat performing a
+bird dog. FOUR points of contact at the base: both knees on the mat under the hips
+and both hands on the mat under the shoulders — the non-working knee stays down on
+the mat for the whole pose, he is NOT kneeling up and NOT in a lunge. From that
+base the right arm reaches forward and the left leg reaches back until both are
+level with the torso, the hips stay square to the floor with no rotation and no
+arch in the lower back, gaze down, neck long. Camera three-quarter side view, low.
 ```
 
 **Motion**
@@ -150,8 +155,11 @@ seconds, hold for one second, then return under the body; the hips stay level an
 do not rotate at any point. Seamless 5-second loop.
 ```
 
-**Must show:** hips level (a glass of water would not spill) · both limbs at torso height ·
-no lumbar arch · shoulders stacked over wrists.
+**Must show:** four-point base — both knees down · hips level · both limbs at torso
+height · no lumbar arch.
+
+**Failed first time because:** it rendered as a half-kneel. Say "both knees on the mat"
+and "not kneeling up".
 
 ---
 
@@ -184,12 +192,14 @@ extended leg low but off the floor · shoulders off the mat.
 
 **Still**
 ```
-[STYLE] [CHARACTER] lying supine in a hollow body hold: lower back pressed flat to
-the mat, ribs pulled down, arms extended overhead past the ears, legs straight and
-lifted about thirty degrees off the floor, body forming a shallow banana shape
-with the shoulders and feet both off the ground, chin tucked, neck long, no arch
-in the lower back. Camera low three-quarter side view so the shallow curve of the
-body against the mat is unmistakable.
+[STYLE] [CHARACTER] lying on his back on the mat in a hollow body hold. The HIPS
+AND GLUTES STAY ON THE FLOOR — this is not a boat pose and not a V-sit. The lower
+back is pressed into the mat, the ribs are pulled down, the arms are extended
+overhead past the ears and lifted just off the floor, and the legs are straight
+and lifted only a few centimetres above the mat. The body makes a shallow, long
+curve hugging the floor, with the shoulder blades and the heels as the only high
+points. Chin tucked, neck long. Camera low three-quarter side view, close to the
+mat, so the shallow curve and the contact with the floor are unmistakable.
 ```
 
 **Motion**
@@ -199,8 +209,11 @@ degrees around the hips, driven by the abs, with the ribs staying down and the
 lower back staying close to the mat. Small, controlled. Seamless 5-second loop.
 ```
 
-**Must show:** low back flat or near-flat · shallow curve, not a deep arch · arms by the
-ears, not out to the sides · legs off the floor.
+**Must show:** hips on the floor · shallow curve, not a V · arms by the ears ·
+legs only just off the mat.
+
+**Failed first time because:** it rendered as a boat pose with the hips high.
+Say "hips on the floor" and "not a V-sit" explicitly.
 
 ---
 
