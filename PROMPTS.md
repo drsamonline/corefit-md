@@ -475,6 +475,16 @@ the exact failure in the prompt: "BOTH arms point straight up", "FOUR points of 
 kneeling up", "the HIPS AND GLUTES STAY ON THE FLOOR — not a boat pose". That wording is what
 is in the prompts above now.
 
+## Animating the stills
+
+`VIDEO-PROMPTS.txt` in the stills zip carries a motion prompt per image for image-to-video
+tools. The rule for all of them: the still already sets the person and the room, so the prompt
+describes **motion only** — what moves, how far, how fast, and what must not move — plus a
+seamless loop and a locked-off camera.
+
+Save each result as `<id>.mp4` beside the matching `.jpg`, run `scripts/media_manifest.py`,
+and the app prefers the clip. `.mp4` beats `.webp` beats `.jpg` beats the SVG figure.
+
 ## Licence note
 
 Assets you generate are yours to license — that is the whole point of this route, and it is

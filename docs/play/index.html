@@ -350,9 +350,15 @@
       </div>
     </div>
     <div class="set-row">
-      <div><span data-i18n="set.videoMode">Video</span><small data-i18n="set.videoMode.d">Clips, or the offline figures only</small></div>
+      <div><span data-i18n="set.vsrc">Clip source</span><small data-i18n="set.vsrc.d">Local clips keep the app fully offline</small></div>
+      <div class="seg-mini sm" id="videoSourceSwitch">
+        <button data-vsrc="local" data-i18n="set.vsrc.local">Local</button><button data-vsrc="youtube" data-i18n="set.vsrc.yt">YouTube</button>
+      </div>
+    </div>
+    <div class="set-row">
+      <div><span data-i18n="set.videoMode">Motion</span><small data-i18n="set.videoMode.d">Moving clips, or still images</small></div>
       <div class="seg-mini sm" id="videoModeSwitch">
-        <button data-vmode="auto">Clips</button><button data-vmode="off">Figures</button>
+        <button data-vmode="auto" data-i18n="set.motion.on">Clips</button><button data-vmode="off" data-i18n="set.motion.off">Stills</button>
       </div>
     </div>
     <div class="set-row">

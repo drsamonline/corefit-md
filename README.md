@@ -39,6 +39,18 @@ the plank. During each rest interval the next exercise is preloaded with `cueVid
 which removes the black frame at the top of the following set. Every window is editable in
 the app's Library: scrub, hit **now** on either field, save.
 
+## Offline by default
+
+The app ships **local clips only**. `Settings → Clip source` defaults to *Local*, which means
+the app makes no network request of any kind — no YouTube script, no thumbnails, nothing.
+Motion comes from `docs/play/assets/media/`; a still is shown for any move without a clip.
+
+YouTube is still in the code but off by default, for anyone who has no local clips yet.
+Switch it on under `Clip source → YouTube` and the 0:30 clip logic comes back.
+
+On the first visit over HTTPS the service worker caches every media file in the manifest, so
+one session online makes the whole workout offline afterwards.
+
 ## When there is no network
 
 Every move ships an **animated SVG figure** drawn for this app (`docs/play/assets/demo/`,

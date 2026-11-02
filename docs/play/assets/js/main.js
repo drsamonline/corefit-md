@@ -143,9 +143,12 @@
   }
 
   function videoWanted() {
-    if (S.get('videoMode') === 'off') return false;
-    if (navigator.onLine === false) return false;
-    return true;
+    return S.get('videoMode') !== 'off';        // motion on at all?
+  }
+  // Local clips are the default: the app then makes no network request at all.
+  // YouTube is opt-in, for anyone who has no local clips yet.
+  function youtubeAllowed() {
+    return S.get('videoSource') === 'youtube' && navigator.onLine !== false;
   }
 
   /* ================= stage ================= */
@@ -180,8 +183,17 @@
       cue = CF.pick(ex.cue) + (modified ? '  ·  ' + CF.t('label.mod') + ': ' + CF.pick(ex.regression) : '');
       steps = ex.steps.map(function (s, i) { return '<li><b>' + (i + 1) + '</b><span>' + s + '</span></li>'; }).join('');
       var clip = S.clipFor(ex);
-      $('videoBadgeText').textContent = ex.videoId ? UI.fmtSec(clip.start) : CF.t('demo.figures');
-      if (ex.videoId && videoWanted()) {
+      var media = CF.Media.get(ex.id);
+      var localClip = media && media.type === 'video' && videoWanted();
+      var useYouTube = !localClip && ex.videoId && youtubeAllowed() && videoWanted();
+      var badge = $('videoBadgeText') ? $('videoBadgeText').parentNode : null;
+      if (badge) badge.style.display = useYouTube ? '' : 'none';
+      if (useYouTube) $('videoBadgeText').textContent = UI.fmtSec(clip.start);
+
+      if (localClip) {
+        if (player) player.pause();
+        showDemo({ src: media.src, type: 'video', label: CF.pick(ex.name) });
+      } else if (useYouTube) {
         hideDemo();
         ensurePlayer(ex);
         player.seek(clip.start);
@@ -490,6 +502,24 @@
     UI.toast(CF.t('toast.exported'));
   }
 
+  /* Warm the service-worker cache with every local clip so a single visit
+     online makes the whole workout work offline afterwards. */
+  function prefetchMedia() {
+    if (!('serviceWorker' in navigator) || !navigator.serviceWorker.controller) return;
+    if (navigator.onLine === false) return;
+    var list = [], k;
+    for (k in CF.Media.map) {
+      if (CF.Media.map[k] && CF.Media.map[k].src) list.push(CF.Media.map[k].src);
+    }
+    var i = 0;
+    (function next() {
+      if (i >= list.length) return;
+      fetch(list[i++], { cache: 'default' }).catch(function () {}).then(function () {
+        setTimeout(next, 120);
+      });
+    })();
+  }
+
   /* ================= reminders ================= */
   function checkReminder() {
     if (!S.get('reminders')) return;
@@ -538,6 +568,7 @@
       navigator.serviceWorker.register('sw.js').catch(function () {});
     }
 
+    prefetchMedia();
     reminderTimer = setInterval(checkReminder, 30000);
     checkReminder();
 

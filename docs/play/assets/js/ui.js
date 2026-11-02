@@ -103,7 +103,11 @@
         var sub = (ex.mode === 'reps' && ex.reps)
           ? ex.reps + ' ' + CF.t('label.reps') + ' · ' + CF.t('label.sec') + ' cap ' + p.work
           : p.work + 's · ' + p.rest + 's ' + CF.t('phase.rest').toLowerCase();
-        html += row(String(i + 1).padStart(2, '0'), exName(ex), sub + ' · ' + CF.t('clip.start').toLowerCase() + ' ' + fmtSec(c.start), p.work);
+        var line = sub;
+        if (S.get('videoSource') === 'youtube' && ex.videoId) {
+          line += ' · ' + CF.t('clip.start').toLowerCase() + ' ' + fmtSec(c.start);
+        }
+        html += row(String(i + 1).padStart(2, '0'), exName(ex), line, p.work);
       }
       if (cool) html += row('—', CF.t('phase.cooldown'), C.COOLDOWN + ' s', C.COOLDOWN);
       $('planList').innerHTML = html;
@@ -191,13 +195,16 @@
         var ex = CF.EXERCISES[i], c = S.clipFor(ex);
         var tag = (ex.mode === 'reps' && ex.reps) ? '<span class="lib-tag">' + ex.reps + ' ' + CF.t('label.reps') + '</span>' : '';
         var hasVideo = !!ex.videoId;
+        var mm = CF.Media.get(ex.id);
         var m = CF.Media.get(ex.id);
         var thumb = (m && m.poster) ? m.poster : (m && m.type === 'image' ? m.src : ex.demo);
         html += '<button class="lib-card" data-id="' + ex.id + '">' +
           '<span class="lib-thumb">' +
             '<img src="' + (thumb || '') + '" alt="" loading="lazy" decoding="async">' +
             (hasVideo ? '<span class="lib-play"><svg class="ic"><use href="#i-play"/></svg></span>' : '') +
-            '<span class="lib-badge">' + (hasVideo ? fmtSec(c.start) + '–' + fmtSec(c.end) : CF.t('demo.figures')) + '</span>' +
+            '<span class="lib-badge">' + ((mm && mm.type === 'video') ? 'LOOP'
+              : hasVideo && S.get('videoSource') === 'youtube' ? fmtSec(c.start) + '–' + fmtSec(c.end)
+              : mm ? CF.t('demo.figures') : CF.t('demo.figures')) + '</span>' +
           '</span>' +
           '<span class="lib-body"><b>' + exName(ex) + tag + '</b>' +
           '<small>' + CF.t('clip.start') + ' ' + fmtSec(c.start) + ' → ' + fmtSec(c.end) + '<br>' +
@@ -276,6 +283,9 @@
       var sp = S.get('speed');
       document.querySelectorAll('#speedSwitch button').forEach(function (b) {
         b.setAttribute('aria-pressed', parseFloat(b.dataset.speed) === sp ? 'true' : 'false');
+      });
+      document.querySelectorAll('#videoSourceSwitch button').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.vsrc === (S.get('videoSource') || 'local') ? 'true' : 'false');
       });
       document.querySelectorAll('#videoModeSwitch button, #libMode button').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.vmode === (S.get('videoMode') || 'auto') ? 'true' : 'false');
