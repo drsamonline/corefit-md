@@ -385,8 +385,8 @@ footer .stamp{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-t
         <p>Here the clip window is data: <b>start 0:30, end 0:55</b>, editable per exercise. The player is created
           with that start, seeked again the moment it is ready, and re-seeked whenever playback passes the end.
           During each rest interval the next clip is preloaded, so the following set opens instantly.</p>
-        <p>If an embed is blocked, the session still runs — a poster and a deep link to the exact second replace
-          the video, and the timer never notices.</p>
+        <p>If an embed is blocked, dead, or you are offline, the session still runs — an animated figure of the
+          movement takes the video's place, the channel is still credited, and the timer never notices.</p>
       </div>
     </div>
   </section>
@@ -417,6 +417,7 @@ open docs/play/index.html
 
 <span class="c"># regenerate the assets in this repo</span>
 python3 scripts/badges.py
+python3 scripts/figures.py
 bash scripts/shot.sh . app</pre>
       <pre class="tree"><b>docs/index.html</b>       this page
 <b>docs/play/</b>            the app
@@ -426,6 +427,7 @@ bash scripts/shot.sh . app</pre>
                         i18n · video · session
                         ui · main
   assets/i18n/          en · hi · gu
+  assets/demo/          10 animated SVG figures
   sw.js                 offline shell
 <b>scripts/</b>              badges and screenshots
 <b>BACKLOG.md</b>            what is next, and what is refused</pre>
