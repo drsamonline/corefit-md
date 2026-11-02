@@ -4,7 +4,7 @@
   'use strict';
 
   CF.CONFIG = {
-    VERSION: '2.6.0',
+    VERSION: '2.7.0',
     BUILD: '2026-11-02',
     KEYS: {
       history:  'corefit.history.v2',
@@ -33,6 +33,7 @@
 
     DEFAULT_SETTINGS: {
       sound: true,
+      volume: 0.7,
       voice: false,
       haptics: true,
       wake: true,

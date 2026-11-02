@@ -85,7 +85,7 @@
       "set.title": "Session settings",
       "set.sub": "Saved on this device",
       "set.sound": "Audio cues",
-      "set.sound.d": "Beeps for the final three seconds",
+      "set.sound.d": "A different tone for work, rest and the final three seconds",
       "set.voice": "Voice prompts",
       "set.voice.d": "Speaks each exercise name",
       "set.haptics": "Haptics",
@@ -147,7 +147,7 @@
       "empty.lib": "No exercises configured.",
       "empty.prog": "No sessions yet. The first one is the hard one.",
       "foot.note": "Built for a five-minute morning habit. Video needs a connection.",
-      "set.videoMode": "Video", "set.videoMode.d": "Clips, or the offline figures only", "credits.title": "Sources and credits", "credits.sub": "Every figure is drawn here; every clip is credited", "credits.note": "The animated figures are original SVG drawn for this app, not frames from the videos. The clips are other people's work — they are embedded, never copied, and each is linked to its source.", "lib.more": "More moves", "lib.more.sub": "offline demonstrations", "lib.more.hint": "Not in the default session. Each has its own animated figure, so it works with no connection.", "demo.offline": "Offline demonstration", "demo.figures": "Figures only", "lib.mode.clips": "Clips", "lib.mode.figures": "Figures only", "set.vsrc": "Clip source", "set.vsrc.d": "Local clips keep the app fully offline", "set.vsrc.local": "Local", "set.vsrc.yt": "YouTube", "set.motion.on": "Clips", "set.motion.off": "Stills", "stage.prepare": "Prepare to move", "stage.winddown": "Wind down", "stage.restcue": "Roll down, breathe in through the nose, reset the brace.", "lang.name": "English"
+      "set.videoMode": "Motion", "set.videoMode.d": "Moving clips where available, otherwise stills", "credits.title": "Sources and credits", "credits.sub": "Every figure is drawn here; every clip is credited", "credits.note": "The animated figures are original SVG drawn for this app, not frames from the videos. The clips are other people's work — they are embedded, never copied, and each is linked to its source.", "lib.more": "More moves", "lib.more.sub": "offline demonstrations", "lib.more.hint": "Not in the default session. Each has its own animated figure, so it works with no connection.", "demo.offline": "Offline demonstration", "demo.figures": "Figures only", "lib.mode.clips": "Clips", "lib.mode.figures": "Figures only", "set.vsrc": "Clip source", "set.vsrc.d": "Where the moving clips come from", "set.vsrc.local": "Local", "set.vsrc.yt": "YouTube", "set.motion.on": "Clips", "set.motion.off": "Stills", "stage.prepare": "Prepare to move", "stage.winddown": "Wind down", "stage.restcue": "Roll down, breathe in through the nose, reset the brace.", "set.volume": "Cue volume", "set.volume.d": "Loud enough to hear over your own breathing", "set.test": "Test", "lang.name": "English"
 },
     hi: {
       "app.name": "CoreFit MD",
@@ -233,7 +233,7 @@
       "set.title": "सेशन सेटिंग्स",
       "set.sub": "इस डिवाइस पर सेव किया गया",
       "set.sound": "ऑडियो संकेत",
-      "set.sound.d": "आखिरी तीन सेकंड के लिए बीप",
+      "set.sound.d": "काम, आराम और आख़िरी तीन सेकंड के लिए अलग ध्वनि",
       "set.voice": "वॉयस प्रॉम्प्ट",
       "set.voice.d": "हर एक्सरसाइज का नाम बोलता है",
       "set.haptics": "हैप्टिक्स",
@@ -295,7 +295,7 @@
       "empty.lib": "कोई एक्सरसाइज सेट नहीं है।",
       "empty.prog": "अभी तक कोई सेशन नहीं है। पहली वाली थोड़ी मुश्किल होती है।",
       "foot.note": "पांच मिनट की सुबह की आदत के लिए बनाया गया है। वीडियो के लिए कनेक्शन चाहिए।",
-      "set.videoMode": "वीडियो", "set.videoMode.d": "क्लिप, या केवल ऑफलाइन चित्र", "credits.title": "स्रोत और श्रेय", "credits.sub": "हर चित्र यहीं बना है; हर क्लिप का श्रेय दिया गया है", "credits.note": "चलते-फिरते चित्र इस ऐप के लिए बनाए गए मूल SVG हैं, वीडियो के फ्रेम नहीं। क्लिप दूसरों का काम हैं — वे केवल एम्बेड होते हैं, कॉपी नहीं, और हर एक अपने स्रोत से जुड़ा है।", "lib.more": "और मूव्स", "lib.more.sub": "ऑफलाइन प्रदर्शन", "lib.more.hint": "डिफ़ॉल्ट सेशन में नहीं। हर एक का अपना एनिमेटेड चित्र है, इसलिए बिना इंटरनेट भी काम करता है।", "demo.offline": "ऑफलाइन प्रदर्शन", "demo.figures": "केवल चित्र", "lib.mode.clips": "क्लिप", "lib.mode.figures": "केवल चित्र", "set.vsrc": "क्लिप स्रोत", "set.vsrc.d": "लोकल क्लिप ऐप को पूरी तरह ऑफलाइन रखती हैं", "set.vsrc.local": "लोकल", "set.vsrc.yt": "यूट्यूब", "set.motion.on": "क्लिप", "set.motion.off": "स्थिर चित्र", "stage.prepare": "चलने के लिए तैयार", "stage.winddown": "शांत हों", "stage.restcue": "लेट जाएँ, नाक से साँस लें, कोर दोबारा कसें।", "lang.name": "हिन्दी"
+      "set.videoMode": "गति", "set.videoMode.d": "जहाँ उपलब्ध हो चलती क्लिप, वरना स्थिर चित्र", "credits.title": "स्रोत और श्रेय", "credits.sub": "हर चित्र यहीं बना है; हर क्लिप का श्रेय दिया गया है", "credits.note": "चलते-फिरते चित्र इस ऐप के लिए बनाए गए मूल SVG हैं, वीडियो के फ्रेम नहीं। क्लिप दूसरों का काम हैं — वे केवल एम्बेड होते हैं, कॉपी नहीं, और हर एक अपने स्रोत से जुड़ा है।", "lib.more": "और मूव्स", "lib.more.sub": "ऑफलाइन प्रदर्शन", "lib.more.hint": "डिफ़ॉल्ट सेशन में नहीं। हर एक का अपना एनिमेटेड चित्र है, इसलिए बिना इंटरनेट भी काम करता है।", "demo.offline": "ऑफलाइन प्रदर्शन", "demo.figures": "केवल चित्र", "lib.mode.clips": "क्लिप", "lib.mode.figures": "केवल चित्र", "set.vsrc": "क्लिप स्रोत", "set.vsrc.d": "चलती क्लिप कहाँ से आएँ", "set.vsrc.local": "लोकल", "set.vsrc.yt": "यूट्यूब", "set.motion.on": "क्लिप", "set.motion.off": "स्थिर चित्र", "stage.prepare": "चलने के लिए तैयार", "stage.winddown": "शांत हों", "stage.restcue": "लेट जाएँ, नाक से साँस लें, कोर दोबारा कसें।", "set.volume": "क्यू वॉल्यूम", "set.volume.d": "अपनी साँस के ऊपर सुनाई देने लायक़", "set.test": "सुनें", "lang.name": "हिन्दी"
 },
     gu: {
       "app.name": "CoreFit MD",
@@ -381,7 +381,7 @@
       "set.title": "સત્ર સેટિંગ્સ",
       "set.sub": "આ ઉપકરણ પર સાચવેલ છે",
       "set.sound": "ઓડિયો સંકેતો",
-      "set.sound.d": "છેલ્લા ત્રણ સેકન્ડ માટે બીપ",
+      "set.sound.d": "કામ, આરામ અને છેલ્લી ત્રણ સેકન્ડ માટે અલગ સૂર",
       "set.voice": "વોઇસ પ્રોમ્પ્ટ્સ",
       "set.voice.d": "દરેક કસરતનું નામ બોલે છે",
       "set.haptics": "હેપ્ટિક્સ",
@@ -443,7 +443,7 @@
       "empty.lib": "કોઈ કસરતો કન્ફિગર કરેલ નથી.",
       "empty.prog": "હજુ સુધી કોઈ સત્રો નથી. પહેલું સત્ર અઘરું હોય છે.",
       "foot.note": "પાંચ મિનિટની સવારની આદત માટે બનાવેલ છે. વિડિયો માટે કનેક્શન જરૂરી છે.",
-      "set.videoMode": "વિડિયો", "set.videoMode.d": "ક્લિપ, અથવા ફક્ત ઓફલાઇન આકૃતિ", "credits.title": "સ્રોત અને શ્રેય", "credits.sub": "દરેક આકૃતિ અહીં દોરેલી છે; દરેક ક્લિપનું શ્રેય આપેલું છે", "credits.note": "ચલિત આકૃતિઓ આ એપ માટે દોરેલી મૂળ SVG છે, વિડિયોના ફ્રેમ નહીં. ક્લિપ બીજાનું કામ છે — તે ફક્ત એમ્બેડ થાય છે, કોપી થતી નથી, અને દરેક તેના સ્રોત સાથે જોડાયેલી છે.", "lib.more": "વધુ મૂવ્સ", "lib.more.sub": "ઓફલાઇન પ્રદર્શન", "lib.more.hint": "ડિફોલ્ટ સત્રમાં નથી. દરેકની પોતાની એનિમેટેડ આકૃતિ છે, તેથી ઇન્ટરનેટ વગર પણ કામ કરે છે.", "demo.offline": "ઓફલાઇન પ્રદર્શન", "demo.figures": "ફક્ત આકૃતિ", "lib.mode.clips": "ક્લિપ", "lib.mode.figures": "ફક્ત આકૃતિ", "set.vsrc": "ક્લિપ સ્રોત", "set.vsrc.d": "લોકલ ક્લિપ એપને સંપૂર્ણ ઓફલાઇન રાખે છે", "set.vsrc.local": "લોકલ", "set.vsrc.yt": "YouTube", "set.motion.on": "ક્લિપ", "set.motion.off": "સ્થિર ચિત્ર", "stage.prepare": "ચાલવા માટે તૈયાર", "stage.winddown": "શાંત થાઓ", "stage.restcue": "સૂઈ જાઓ, નાકથી શ્વાસ લો, કોર ફરી કસો.", "lang.name": "ગુજરાતી"
+      "set.videoMode": "ગતિ", "set.videoMode.d": "જ્યાં ઉપલબ્ધ હોય ત્યાં ચાલતી ક્લિપ, નહીં તો સ્થિર ચિત્ર", "credits.title": "સ્રોત અને શ્રેય", "credits.sub": "દરેક આકૃતિ અહીં દોરેલી છે; દરેક ક્લિપનું શ્રેય આપેલું છે", "credits.note": "ચલિત આકૃતિઓ આ એપ માટે દોરેલી મૂળ SVG છે, વિડિયોના ફ્રેમ નહીં. ક્લિપ બીજાનું કામ છે — તે ફક્ત એમ્બેડ થાય છે, કોપી થતી નથી, અને દરેક તેના સ્રોત સાથે જોડાયેલી છે.", "lib.more": "વધુ મૂવ્સ", "lib.more.sub": "ઓફલાઇન પ્રદર્શન", "lib.more.hint": "ડિફોલ્ટ સત્રમાં નથી. દરેકની પોતાની એનિમેટેડ આકૃતિ છે, તેથી ઇન્ટરનેટ વગર પણ કામ કરે છે.", "demo.offline": "ઓફલાઇન પ્રદર્શન", "demo.figures": "ફક્ત આકૃતિ", "lib.mode.clips": "ક્લિપ", "lib.mode.figures": "ફક્ત આકૃતિ", "set.vsrc": "ક્લિપ સ્રોત", "set.vsrc.d": "ચાલતી ક્લિપ ક્યાંથી આવે", "set.vsrc.local": "લોકલ", "set.vsrc.yt": "YouTube", "set.motion.on": "ક્લિપ", "set.motion.off": "સ્થિર ચિત્ર", "stage.prepare": "ચાલવા માટે તૈયાર", "stage.winddown": "શાંત થાઓ", "stage.restcue": "સૂઈ જાઓ, નાકથી શ્વાસ લો, કોર ફરી કસો.", "set.volume": "ક્યુ વોલ્યુમ", "set.volume.d": "પોતાના શ્વાસ ઉપર સંભળાય એટલું", "set.test": "સાંભળો", "lang.name": "ગુજરાતી"
 },
   };
 })(window.CF = window.CF || {});

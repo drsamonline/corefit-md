@@ -9,8 +9,8 @@
   var player = null;
   var currentVideoId = null;
   var wakeLock = null;
-  var audioCtx = null;
   var lastBeepSec = -1;
+  var lastTenSec = -1, lastHalfSec = -1;
   var lastCueIdx = -1;
   var snapTimer = null;
   var reminderTimer = null;
@@ -41,19 +41,9 @@
   }
 
   /* ================= sound ================= */
-  function beep(freq, dur, gain) {
-    if (!S.get('sound')) return;
-    try {
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      var o = audioCtx.createOscillator(), g = audioCtx.createGain();
-      o.type = 'sine'; o.frequency.value = freq;
-      g.gain.setValueAtTime(gain || 0.11, audioCtx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.0008, audioCtx.currentTime + dur);
-      o.connect(g); g.connect(audioCtx.destination);
-      o.start(); o.stop(audioCtx.currentTime + dur);
-    } catch (e) {}
-  }
+  // Cue design lives in sound.js; this file only decides when to fire one.
+  function cue(name) { if (CF.Sound) CF.Sound.play(name); }
+
   function buzz(ms) { if (!S.get('haptics')) return; try { navigator.vibrate && navigator.vibrate(ms); } catch (e) {} }
   function speak(text) {
     if (!S.get('voice') || !window.speechSynthesis) return;
@@ -236,7 +226,7 @@
     $('stepsList').innerHTML = steps;
     $('segFill').style.width = '0%';
     $('timeLeft').textContent = Math.ceil(seg.dur);
-    lastBeepSec = -1;
+    lastBeepSec = -1; lastTenSec = -1; lastHalfSec = -1;
     lastCueIdx = -1;
     buildRail();
   }
@@ -281,11 +271,19 @@
       }
     }
 
-    // countdown beeps
+    // countdown: the last three seconds of a set sound different from the last
+    // three of a rest, so you know whether to hold or to get into position
     if (seg && seg.k !== 'warmup' && seg.k !== 'cooldown' && disp <= 3 && disp > 0 && disp !== lastBeepSec) {
       lastBeepSec = disp;
-      beep(420, 0.06, 0.07);
+      var resting = seg.k === 'rest';
+      cue(resting ? (disp === 1 ? 'prepLast' : 'prep') : (disp === 1 ? 'tickLast' : 'tick'));
       if (disp === 3) buzz(35);
+    }
+
+    // two long-hold cues: ten seconds left, and the halfway mark
+    if (seg && seg.k === 'work' && session && !session.paused) {
+      if (seg.dur >= 25 && disp === 10 && lastTenSec !== si) { lastTenSec = si; cue('ten'); }
+      if (seg.dur >= 30 && disp === Math.ceil(seg.dur / 2) && lastHalfSec !== si) { lastHalfSec = si; cue('half'); }
     }
 
     if (player && seg && seg.k === 'work') player.enforceWindow();
@@ -300,13 +298,13 @@
   function onPhase(index, seg) {
     paintPhase(index, seg);
     if (seg.k === 'work') {
-      beep(660, 0.16, 0.13); buzz(150);
+      cue('go'); buzz(150);
       var ex = CF.EXERCISES[seg.ex];
       if (ex) speak(CF.pick(ex.name) + (seg.side ? '. ' + CF.t(seg.side === 1 ? 'stage.sideL' : 'stage.sideR') : ''));
     } else if (seg.k === 'rest') {
-      beep(520, 0.12, 0.09); buzz(100);
+      cue('rest'); buzz(100);
     } else {
-      beep(560, 0.1, 0.08);
+      cue('soft');
     }
   }
 
@@ -314,8 +312,7 @@
     releaseWake();
     stopSnapshot();
     if (player) player.pause();
-    beep(700, 0.18, 0.15);
-    setTimeout(function () { beep(900, 0.22, 0.15); }, 170);
+    cue('done');
     buzz([110, 60, 190]);
 
     S.addSession({ dur: sum.duration, moves: sum.movesDone, skipped: sum.skipped });
@@ -607,6 +604,7 @@
 
     /* session */
     $('btnStart').addEventListener('click', function () {
+      if (CF.Sound) CF.Sound.unlock();
       if ((S.profile.flags || []).length && !sessionStorage.getItem('corefit.painok')) {
         var ok = confirm('Modified plan is active. Stop immediately if any move causes pain.\n\nContinue?');
         if (!ok) return;
@@ -624,7 +622,7 @@
       $('btnPause').innerHTML = '<svg class="ic"><use href="#' + (session.paused ? 'i-play' : 'i-pause') + '"/></svg>';
       if (player) session.paused ? player.pause() : player.play();
     });
-    $('btnSkip').addEventListener('click', function () { if (session) { beep(380, 0.07, 0.07); session.skip(); } });
+    $('btnSkip').addEventListener('click', function () { if (session) { cue('soft'); session.skip(); } });
     $('btnRestart').addEventListener('click', function () {
       if (!session) return;
       session.restartSeg();
@@ -637,7 +635,7 @@
     $('btnRepTap').addEventListener('click', function () {
       if (!session) return;
       var n = session.addRep();
-      beep(760, 0.05, 0.07); buzz(25);
+      cue('soft'); buzz(25);
       var seg = session.schedule[session.si];
       var ex = seg ? CF.EXERCISES[seg.ex] : null;
       if (ex && ex.reps) $('repText').textContent = Math.min(n, ex.reps) + ' / ' + ex.reps;
@@ -690,6 +688,43 @@
       var b = e.target.closest('button[data-mode]');
       if (b) setMode(b.dataset.mode);
     });
+
+    /* ---- clip source and motion: these two switches were rendered but never
+       wired, so changing them did nothing. Fixed here. ---- */
+    function applyVideoPrefs() {
+      UI.renderSettings();
+      UI.renderAll();
+    }
+    function setVideoSource(v) {
+      S.set('videoSource', v);
+      applyVideoPrefs();
+      UI.toast(v === 'local' ? 'Local clips only — no network' : 'YouTube clips allowed');
+    }
+    function setVideoMode(v) {
+      S.set('videoMode', v);
+      applyVideoPrefs();
+      UI.toast(v === 'off' ? 'Stills only' : 'Motion when available');
+    }
+    $('videoSourceSwitch').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-vsrc]');
+      if (b) setVideoSource(b.dataset.vsrc);
+    });
+    $('videoModeSwitch').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-vmode]');
+      if (b) setVideoMode(b.dataset.vmode);
+    });
+    $('libMode').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-vmode]');
+      if (b) setVideoMode(b.dataset.vmode);
+    });
+
+    /* ---- cue volume ---- */
+    $('volRange').addEventListener('input', function () {
+      S.set('volume', Number(this.value) / 100);
+      if (CF.Sound) CF.Sound.unlock();
+    });
+    $('volRange').addEventListener('change', function () { if (CF.Sound) CF.Sound.play('tick'); });
+    $('btnSoundTest').addEventListener('click', function () { if (CF.Sound) CF.Sound.test(); });
     $('btnClipSave').addEventListener('click', saveClip);
     $('btnClipReset').addEventListener('click', function () {
       if (!clipEx) return;

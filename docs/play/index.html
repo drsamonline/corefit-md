@@ -344,6 +344,13 @@
     </div>
     <div id="settingsList"></div>
     <div class="set-row">
+      <div><span data-i18n="set.volume">Cue volume</span><small data-i18n="set.volume.d">Loud enough to hear over your own breathing</small></div>
+      <div class="vol">
+        <input type="range" id="volRange" min="0" max="100" step="5" aria-label="Cue volume">
+        <button class="btn btn-ghost sm" id="btnSoundTest" data-i18n="set.test">Test</button>
+      </div>
+    </div>
+    <div class="set-row">
       <div><span data-i18n="set.theme">Colour theme</span><small>Auto · light · dark</small></div>
       <div class="seg-mini sm" id="themeSwitch">
         <button data-theme="auto">Auto</button><button data-theme="light">Light</button><button data-theme="dark">Dark</button>
@@ -448,6 +455,7 @@
 <script src="assets/js/video.js" defer></script>
 <script src="assets/media/media.js" defer></script>
 <script src="assets/js/media.js" defer></script>
+<script src="assets/js/sound.js" defer></script>
 <script src="assets/js/session.js" defer></script>
 <script src="assets/js/ui.js" defer></script>
 <script src="assets/js/main.js" defer></script>

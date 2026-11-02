@@ -286,6 +286,8 @@
       document.querySelectorAll('#speedSwitch button').forEach(function (b) {
         b.setAttribute('aria-pressed', parseFloat(b.dataset.speed) === sp ? 'true' : 'false');
       });
+      var volEl = document.getElementById('volRange');
+      if (volEl) volEl.value = Math.round((S.get('volume') === undefined ? 0.7 : S.get('volume')) * 100);
       document.querySelectorAll('#videoSourceSwitch button').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.vsrc === (S.get('videoSource') || 'local') ? 'true' : 'false');
       });
