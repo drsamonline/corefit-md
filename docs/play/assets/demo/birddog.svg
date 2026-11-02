@@ -1,35 +1,59 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Bird dog: opposite arm and leg reach long while the hips stay level">
 <title>Bird dog: opposite arm and leg reach long while the hips stay level</title>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="#ff7a45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <radialGradient id="pool" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ff7a45" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ff7a45" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
 <style>
-  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
-  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
-  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
-  .head{fill:#e7f3ed;stroke:none}
-  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
-  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
-  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  .near{fill:none;stroke:#eaf5ef;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .far{fill:none;stroke:#6f9488;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+  .move{fill:none;stroke:#ff7a45;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .torso{fill:#eaf5ef;stroke:none}
+  .torsofar{fill:#6f9488;stroke:none;opacity:.9}
+  .head{fill:#eaf5ef;stroke:none}
+  .headfar{fill:#6f9488;stroke:none;opacity:.9}
+  .mat{stroke:#2f5e52;stroke-width:2.5;stroke-linecap:round}
+  .shadow{fill:#000000;opacity:.32}
+  .ref{fill:none;stroke:#6f9488;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:4 7;opacity:.75}
+  .arc{fill:none;stroke:#ff7a45;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:5 6;opacity:.8}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.8}
   g[data-o]{transform-box:view-box}
   @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
 
   .armR{animation:armR 4s ease-in-out infinite}
   .legR{animation:legR 4s ease-in-out infinite}
-  @keyframes armR{0%,18%{transform:rotate(0)}44%,62%{transform:rotate(-88deg)}86%,100%{transform:rotate(0)}}
-  @keyframes legR{0%,18%{transform:rotate(0)}44%,62%{transform:rotate(88deg)}86%,100%{transform:rotate(0)}}
+  @keyframes armR{0%,18%{transform:rotate(0)}44%,62%{transform:rotate(-86deg)}86%,100%{transform:rotate(0)}}
+  @keyframes legR{0%,18%{transform:rotate(0)}44%,62%{transform:rotate(86deg)}86%,100%{transform:rotate(0)}}
 </style>
-<line class="mat" x1="28" y1="142" x2="292" y2="142"/>
+<ellipse cx="160" cy="112" rx="120" ry="50" fill="url(#pool)"/>
+<line class="mat" x1="26" y1="140" x2="294" y2="140"/>
+<g transform="translate(160 140) scale(1.1) translate(-160 -140)">
 
-  <line class="f" x1="122" y1="112" x2="200" y2="112"/>
-  <circle class="head" cx="215" cy="103" r="9.5"/>
-  <line class="l" x1="200" y1="112" x2="206" y2="141"/>
-  <line class="l" x1="122" y1="112" x2="116" y2="141"/>
-  <circle class="joint" cx="122" cy="112" r="3.4"/>
-  <circle class="joint" cx="200" cy="112" r="3.4"/>
-  <g data-o="1" style="transform-origin:200px 112px" class="armR">
-    <line class="l" x1="200" y1="112" x2="212" y2="140"/>
+  <ellipse class="shadow" cx="160" cy="142" rx="78" ry="3.5"/>
+  <path class="torso" d="M118 106 L198 106 L198 118 L118 118 Z"/>
+  <line class="far" x1="196" y1="114" x2="200" y2="140"/>
+  <line class="far" x1="120" y1="114" x2="114" y2="140"/>
+  <line class="near" x1="198" y1="112" x2="204" y2="140"/>
+  <line class="near" x1="118" y1="112" x2="112" y2="140"/>
+  <g data-o="1" style="transform-origin:197px 110px" class="armR">
+    <line class="move" x1="197" y1="110" x2="210" y2="138"/>
   </g>
-  <g data-o="1" style="transform-origin:122px 112px" class="legR">
-    <line class="l" x1="122" y1="112" x2="112" y2="140"/>
+  <g data-o="1" style="transform-origin:119px 110px" class="legR">
+    <line class="move" x1="119" y1="110" x2="110" y2="138"/>
   </g>
-  <line class="ghost" x1="118" y1="110" x2="206" y2="110"/>
+  <line class="near" x1="198" y1="108" x2="208" y2="104" stroke-width="5"/>
+  <circle class="head" cx="217" cy="101" r="8.5"/>
+  <line class="ref" x1="116" y1="106" x2="204" y2="106"/>
+  <path class="arc" d="M214 126 q16 -4 22 -18" marker-end="url(#a)">
+    <animate attributeName="opacity" values="0;.9;0" dur="4s" repeatCount="indefinite"/>
+  </path>
 
+</g>
 </svg>

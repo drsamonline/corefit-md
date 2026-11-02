@@ -1,28 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Glute bridge: heels down, lift the hips, squeeze, lower slowly">
-<title>Glute bridge: heels down, lift the hips, squeeze, lower slowly</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Glute bridge: heels down, lift the hips, squeeze the glutes, lower slowly">
+<title>Glute bridge: heels down, lift the hips, squeeze the glutes, lower slowly</title>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="#ff7a45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <radialGradient id="pool" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ff7a45" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ff7a45" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
 <style>
-  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
-  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
-  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
-  .head{fill:#e7f3ed;stroke:none}
-  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
-  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
-  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  .near{fill:none;stroke:#eaf5ef;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .far{fill:none;stroke:#6f9488;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+  .move{fill:none;stroke:#ff7a45;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .torso{fill:#eaf5ef;stroke:none}
+  .torsofar{fill:#6f9488;stroke:none;opacity:.9}
+  .head{fill:#eaf5ef;stroke:none}
+  .headfar{fill:#6f9488;stroke:none;opacity:.9}
+  .mat{stroke:#2f5e52;stroke-width:2.5;stroke-linecap:round}
+  .shadow{fill:#000000;opacity:.32}
+  .ref{fill:none;stroke:#6f9488;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:4 7;opacity:.75}
+  .arc{fill:none;stroke:#ff7a45;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:5 6;opacity:.8}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.8}
   g[data-o]{transform-box:view-box}
   @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
 
   .hips{animation:hips 3.6s ease-in-out infinite}
-  @keyframes hips{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-12deg)}}
+  @keyframes hips{0%,100%{transform:rotate(3deg)}50%{transform:rotate(-4deg)}}
 </style>
-<line class="mat" x1="28" y1="134" x2="292" y2="134"/>
+<ellipse cx="136" cy="112" rx="110" ry="46" fill="url(#pool)"/>
+<line class="mat" x1="26" y1="134" x2="294" y2="134"/>
+<g transform="translate(160 134) scale(1.1) translate(-160 -134)">
 
-  <line class="f" x1="96" y1="120" x2="150" y2="118"/>
-  <circle class="head" cx="78" cy="118" r="9.5"/>
-  <line class="l" x1="96" y1="120" x2="72" y2="130"/>
-  <g data-o="1" style="transform-origin:150px 118px" class="hips">
-    <line class="l" x1="150" y1="118" x2="186" y2="104"/>
-    <line class="l" x1="186" y1="104" x2="204" y2="130"/>
-    <circle class="joint" cx="186" cy="104" r="3.2"/>
+  <ellipse class="shadow" cx="150" cy="136" rx="76" ry="3.5"/>
+  <g data-o="1" style="transform-origin:92px 126px" class="hips">
+    <path class="torso" d="M92 121 L150 103 L152 114 L94 131 Z"/>
+    <line class="far" x1="150" y1="110" x2="186" y2="102"/>
+    <line class="far" x1="186" y1="102" x2="192" y2="130"/>
+    <line class="move" x1="150" y1="107" x2="188" y2="99"/>
+    <line class="move" x1="188" y1="99" x2="196" y2="130"/>
+    <line class="near" x1="94" y1="126" x2="122" y2="131"/>
   </g>
+  <line class="near" x1="92" y1="126" x2="82" y2="124" stroke-width="5"/>
+  <circle class="head" cx="72" cy="123" r="8.5"/>
+  <path class="arc" d="M164 88 q14 -3 20 7" marker-end="url(#a)">
+    <animate attributeName="opacity" values="0;.85;0" dur="3.6s" repeatCount="indefinite"/>
+  </path>
 
+</g>
 </svg>

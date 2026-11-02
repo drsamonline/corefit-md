@@ -1,31 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Superman: lie face down, lift the opposite arm and leg, keep the neck long">
 <title>Superman: lie face down, lift the opposite arm and leg, keep the neck long</title>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="#ff7a45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <radialGradient id="pool" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ff7a45" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ff7a45" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
 <style>
-  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
-  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
-  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
-  .head{fill:#e7f3ed;stroke:none}
-  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
-  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
-  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  .near{fill:none;stroke:#eaf5ef;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .far{fill:none;stroke:#6f9488;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+  .move{fill:none;stroke:#ff7a45;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .torso{fill:#eaf5ef;stroke:none}
+  .torsofar{fill:#6f9488;stroke:none;opacity:.9}
+  .head{fill:#eaf5ef;stroke:none}
+  .headfar{fill:#6f9488;stroke:none;opacity:.9}
+  .mat{stroke:#2f5e52;stroke-width:2.5;stroke-linecap:round}
+  .shadow{fill:#000000;opacity:.32}
+  .ref{fill:none;stroke:#6f9488;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:4 7;opacity:.75}
+  .arc{fill:none;stroke:#ff7a45;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:5 6;opacity:.8}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.8}
   g[data-o]{transform-box:view-box}
   @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
 
   .armS{animation:armS 3.8s ease-in-out infinite}
   .legS{animation:legS 3.8s ease-in-out infinite}
-  @keyframes armS{0%,100%{transform:rotate(0)}50%{transform:rotate(11deg)}}
-  @keyframes legS{0%,100%{transform:rotate(0)}50%{transform:rotate(-11deg)}}
+  @keyframes armS{0%,100%{transform:rotate(0)}50%{transform:rotate(15deg)}}
+  @keyframes legS{0%,100%{transform:rotate(0)}50%{transform:rotate(-15deg)}}
 </style>
-<line class="mat" x1="28" y1="134" x2="292" y2="134"/>
+<ellipse cx="146" cy="116" rx="116" ry="44" fill="url(#pool)"/>
+<line class="mat" x1="26" y1="134" x2="294" y2="134"/>
+<g transform="translate(160 134) scale(1.1) translate(-160 -134)">
 
-  <line class="f" x1="96" y1="120" x2="186" y2="120"/>
-  <circle class="head" cx="78" cy="116" r="9.5"/>
-  <g data-o="1" style="transform-origin:100px 120px" class="armS">
-    <line class="l" x1="100" y1="120" x2="64" y2="124"/>
+  <ellipse class="shadow" cx="146" cy="136" rx="86" ry="3.5"/>
+  <path class="torso" d="M96 114 L176 114 L176 124 L96 124 Z"/>
+  <g data-o="1" style="transform-origin:100px 119px" class="armS">
+    <line class="far" x1="98" y1="122" x2="64" y2="126"/>
+    <line class="move" x1="100" y1="116" x2="60" y2="120"/>
   </g>
-  <g data-o="1" style="transform-origin:182px 120px" class="legS">
-    <line class="l" x1="182" y1="120" x2="224" y2="124"/>
+  <g data-o="1" style="transform-origin:172px 119px" class="legS">
+    <line class="far" x1="174" y1="122" x2="216" y2="126"/>
+    <line class="move" x1="172" y1="116" x2="218" y2="120"/>
   </g>
-  <circle class="joint" cx="182" cy="120" r="3.2"/>
+  <line class="near" x1="96" y1="116" x2="86" y2="114" stroke-width="5"/>
+  <circle class="head" cx="76" cy="113" r="8.5"/>
+  <path class="arc" d="M56 112 q-6 -10 2 -16" marker-end="url(#a)">
+    <animate attributeName="opacity" values="0;.85;0" dur="3.8s" repeatCount="indefinite"/>
+  </path>
 
+</g>
 </svg>

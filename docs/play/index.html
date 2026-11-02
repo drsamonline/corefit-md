@@ -180,8 +180,17 @@
     <!-- ================= LIBRARY ================= -->
     <section class="view" id="view-library" role="tabpanel">
       <div class="card">
-        <div class="card-head"><span class="label" data-i18n="label.library">Exercise library</span><span class="label dim" id="libCount"></span></div>
-        <p class="hint" data-i18n="clip.hint">The workout loops only this window, so every set opens on the demonstration itself.</p>
+        <div class="card-head">
+          <span class="label" data-i18n="label.library">Exercise library</span>
+          <span class="label dim" id="libCount"></span>
+        </div>
+        <div class="lib-mode">
+          <div class="seg-mini" id="libMode">
+            <button data-vmode="auto" data-i18n="lib.mode.clips">Clips</button>
+            <button data-vmode="off" data-i18n="lib.mode.figures">Figures only</button>
+          </div>
+          <span class="hint" id="libModeHint"></span>
+        </div>
       </div>
       <div class="lib" id="libList"></div>
 
@@ -281,7 +290,12 @@
     </div>
     <div class="video-card" style="aspect-ratio:16/9">
       <div class="video-host" id="clipHost"></div>
+      <img id="clipDemo" class="clip-demo" src="" alt="">
       <div class="video-badge"><svg class="ic"><use href="#i-film"/></svg><span id="clipBadge">0:30</span></div>
+    </div>
+    <div class="row2">
+      <a class="btn btn-ghost sm" id="clipOpen" target="_blank" rel="noopener">Open on YouTube ↗</a>
+      <a class="btn btn-ghost sm" id="clipFind" target="_blank" rel="noopener">Find another clip ↗</a>
     </div>
     <div class="trim-grid">
       <div class="field">

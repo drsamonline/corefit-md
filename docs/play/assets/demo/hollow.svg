@@ -1,31 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Hollow body hold: ribs down, low back flat, a shallow banana not a deep arch">
-<title>Hollow body hold: ribs down, low back flat, a shallow banana not a deep arch</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Hollow body hold: ribs down, low back flat — a shallow banana, not a deep arch">
+<title>Hollow body hold: ribs down, low back flat — a shallow banana, not a deep arch</title>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="#ff7a45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <radialGradient id="pool" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ff7a45" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ff7a45" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
 <style>
-  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
-  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
-  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
-  .head{fill:#e7f3ed;stroke:none}
-  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
-  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
-  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  .near{fill:none;stroke:#eaf5ef;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .far{fill:none;stroke:#6f9488;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+  .move{fill:none;stroke:#ff7a45;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .torso{fill:#eaf5ef;stroke:none}
+  .torsofar{fill:#6f9488;stroke:none;opacity:.9}
+  .head{fill:#eaf5ef;stroke:none}
+  .headfar{fill:#6f9488;stroke:none;opacity:.9}
+  .mat{stroke:#2f5e52;stroke-width:2.5;stroke-linecap:round}
+  .shadow{fill:#000000;opacity:.32}
+  .ref{fill:none;stroke:#6f9488;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:4 7;opacity:.75}
+  .arc{fill:none;stroke:#ff7a45;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:5 6;opacity:.8}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.8}
   g[data-o]{transform-box:view-box}
   @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
 
   .rock{animation:rock 4s ease-in-out infinite}
-  @keyframes rock{0%,100%{transform:rotate(2.4deg)}50%{transform:rotate(-2.4deg)}}
+  @keyframes rock{0%,100%{transform:rotate(2.2deg)}50%{transform:rotate(-2.2deg)}}
 </style>
-<line class="mat" x1="28" y1="134" x2="292" y2="134"/>
+<ellipse cx="146" cy="116" rx="120" ry="48" fill="url(#pool)"/>
+<line class="mat" x1="26" y1="132" x2="294" y2="132"/>
+<g transform="translate(160 132) scale(1.1) translate(-160 -132)">
 
-  <g data-o="1" style="transform-origin:168px 126px" class="rock">
-    <line class="f" x1="88" y1="112" x2="168" y2="126"/>
-    <circle class="head" cx="76" cy="108" r="10"/>
-    <line class="l" x1="88" y1="112" x2="46" y2="96"/>
-    <line class="l" x1="168" y1="126" x2="224" y2="108"/>
-    <circle class="joint" cx="168" cy="126" r="3.4"/>
-    <line class="ghost" x1="60" y1="104" x2="214" y2="112"/>
+  <ellipse class="shadow" cx="150" cy="134" rx="82" ry="3.5"/>
+  <g data-o="1" style="transform-origin:166px 124px" class="rock">
+    <path class="torso" d="M96 108 L166 120 L164 128 L94 116 Z"/>
+    <line class="far" x1="96" y1="112" x2="54" y2="97"/>
+    <line class="far" x1="166" y1="126" x2="196" y2="119"/>
+    <line class="far" x1="196" y1="119" x2="224" y2="109"/>
+    <line class="near" x1="96" y1="110" x2="50" y2="94"/>
+    <line class="near" x1="164" y1="124" x2="196" y2="117"/>
+    <line class="near" x1="196" y1="117" x2="226" y2="107"/>
+    <line class="near" x1="96" y1="112" x2="86" y2="108" stroke-width="5"/>
+    <circle class="head" cx="76" cy="105" r="8.5"/>
+    <line class="ref" x1="58" y1="104" x2="214" y2="110"/>
   </g>
-  <path class="glow" d="M150 130 q12 -4 24 -2">
-    <animate attributeName="opacity" values=".25;1;.25" dur="2.6s" repeatCount="indefinite"/>
+  <path class="glow" d="M148 128 q14 -5 28 -2">
+    <animate attributeName="opacity" values=".2;1;.2" dur="2.8s" repeatCount="indefinite"/>
   </path>
 
+</g>
 </svg>

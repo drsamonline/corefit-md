@@ -185,6 +185,7 @@
 
     /* ---------------- library ---------------- */
     renderLibrary: function () {
+      UI.syncLibMode();
       var html = '';
       for (var i = 0; i < CF.EXERCISES.length; i++) {
         var ex = CF.EXERCISES[i], c = S.clipFor(ex);
@@ -204,6 +205,17 @@
       }
       $('libList').innerHTML = html;
       $('libCount').textContent = CF.EXERCISES.length + ' ' + CF.t('label.moves');
+    },
+
+    syncLibMode: function () {
+      var mode = S.get('videoMode') || 'auto';
+      document.querySelectorAll('#libMode button').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.vmode === mode ? 'true' : 'false');
+      });
+      var h = $('libModeHint');
+      if (h) h.textContent = mode === 'off'
+        ? 'Animated figures — no connection needed.'
+        : (navigator.onLine === false ? 'Offline: showing figures.' : 'Clips, with figures as the fallback.');
     },
 
     renderExtras: function () {
@@ -261,9 +273,13 @@
       document.querySelectorAll('#speedSwitch button').forEach(function (b) {
         b.setAttribute('aria-pressed', parseFloat(b.dataset.speed) === sp ? 'true' : 'false');
       });
-      document.querySelectorAll('#videoModeSwitch button').forEach(function (b) {
+      document.querySelectorAll('#videoModeSwitch button, #libMode button').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.vmode === (S.get('videoMode') || 'auto') ? 'true' : 'false');
       });
+      var lmh = $('libModeHint');
+      if (lmh) lmh.textContent = (S.get('videoMode') === 'off')
+        ? 'Animated figures — no connection needed.'
+        : (navigator.onLine === false ? 'Offline: showing figures.' : 'Clips, with figures as the fallback.');
       document.querySelectorAll('#themeSwitch button').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.theme === (S.get('theme') || 'auto') ? 'true' : 'false');
       });

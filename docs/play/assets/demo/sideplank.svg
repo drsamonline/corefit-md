@@ -1,30 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Side plank: elbow under shoulder, hips lifted, one straight line">
-<title>Side plank: elbow under shoulder, hips lifted, one straight line</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Side plank: elbow under shoulder, hips lifted, one line from head to feet">
+<title>Side plank: elbow under shoulder, hips lifted, one line from head to feet</title>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="#ff7a45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <radialGradient id="pool" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ff7a45" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ff7a45" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
 <style>
-  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
-  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
-  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
-  .head{fill:#e7f3ed;stroke:none}
-  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
-  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
-  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  .near{fill:none;stroke:#eaf5ef;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .far{fill:none;stroke:#6f9488;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+  .move{fill:none;stroke:#ff7a45;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .torso{fill:#eaf5ef;stroke:none}
+  .torsofar{fill:#6f9488;stroke:none;opacity:.9}
+  .head{fill:#eaf5ef;stroke:none}
+  .headfar{fill:#6f9488;stroke:none;opacity:.9}
+  .mat{stroke:#2f5e52;stroke-width:2.5;stroke-linecap:round}
+  .shadow{fill:#000000;opacity:.32}
+  .ref{fill:none;stroke:#6f9488;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:4 7;opacity:.75}
+  .arc{fill:none;stroke:#ff7a45;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:5 6;opacity:.8}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.8}
   g[data-o]{transform-box:view-box}
   @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
 
-  .breathe2{animation:breathe2 3.4s ease-in-out infinite;transform-box:view-box}
-  @keyframes breathe2{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+  .bob{animation:bob 3.6s ease-in-out infinite;transform-box:view-box}
+  .upArm{animation:upArm 3.6s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.4px)}}
+  @keyframes upArm{0%,100%{transform:rotate(0)}50%{transform:rotate(-5deg)}}
 </style>
-<line class="mat" x1="28" y1="142" x2="292" y2="142"/>
+<ellipse cx="150" cy="110" rx="116" ry="50" fill="url(#pool)"/>
+<line class="mat" x1="26" y1="142" x2="294" y2="142"/>
+<g transform="translate(160 142) scale(1.1) translate(-160 -142)">
 
-  <g class="breathe2">
-    <line class="f" x1="130" y1="120" x2="196" y2="104"/>
-    <line class="l" x1="130" y1="120" x2="86" y2="134"/>
-    <line class="l" x1="196" y1="104" x2="192" y2="140"/>
-    <circle class="head" cx="212" cy="99" r="9.5"/>
-    <line class="l" x1="196" y1="104" x2="200" y2="70"/>
-    <circle class="joint" cx="130" cy="120" r="3.4"/>
-    <circle class="joint" cx="196" cy="104" r="3.4"/>
-    <line class="ghost" x1="88" y1="135" x2="208" y2="100"/>
+  <ellipse class="shadow" cx="140" cy="144" rx="76" ry="3.5"/>
+  <g class="bob">
+    <path class="torso" d="M126 114 L192 100 L194 110 L128 124 Z"/>
+    <line class="far" x1="128" y1="120" x2="86" y2="134"/>
+    <line class="near" x1="126" y1="116" x2="84" y2="131"/>
+    <line class="far" x1="190" y1="104" x2="186" y2="140"/>
+    <line class="far" x1="186" y1="140" x2="208" y2="140"/>
+    <line class="near" x1="192" y1="106" x2="190" y2="139"/>
+    <line class="near" x1="190" y1="139" x2="212" y2="139"/>
+    <g data-o="1" style="transform-origin:192px 104px" class="upArm">
+      <line class="move" x1="192" y1="104" x2="198" y2="70"/>
+    </g>
+    <line class="near" x1="192" y1="102" x2="202" y2="98" stroke-width="5"/>
+    <circle class="head" cx="211" cy="95" r="8.5"/>
+    <line class="ref" x1="88" y1="132" x2="206" y2="96"/>
   </g>
+  <path class="arc" d="M206 78 q10 4 8 14" marker-end="url(#a)">
+    <animate attributeName="opacity" values="0;.85;0" dur="3.6s" repeatCount="indefinite"/>
+  </path>
 
+</g>
 </svg>

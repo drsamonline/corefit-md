@@ -194,7 +194,7 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
 .lib-card:active{transform:scale(.985)}
 .lib-card.static{cursor:default}
 .lib-card.static:active{transform:none}
-.lib-thumb{position:relative;width:76px;height:52px;border-radius:9px;overflow:hidden;background:#0a1613;flex-shrink:0;border:1px solid var(--line)}
+.lib-thumb{position:relative;width:86px;height:58px;border-radius:9px;overflow:hidden;background:#0a1613;flex-shrink:0;border:1px solid var(--line)}
 .lib-thumb img{width:100%;height:100%;object-fit:contain;display:block;padding:2px}
 .lib-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5));pointer-events:none}
 .lib-play{position:absolute;inset:0;display:grid;place-items:center;z-index:2}
@@ -202,7 +202,7 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
 .lib-badge{position:absolute;left:5px;bottom:5px;z-index:3;font-family:var(--f-mono);font-size:.48rem;font-weight:600;
   letter-spacing:.04em;color:#fff;background:rgba(0,0,0,.55);padding:2px 5px;border-radius:4px}
 .lib-body{flex:1;min-width:0}
-.lib-body b{display:block;font-size:.82rem;font-weight:600;letter-spacing:-.01em}
+.lib-body b{display:block;font-size:.82rem;font-weight:600;letter-spacing:-.01em;word-spacing:.04em}
 .lib-body small{font-family:var(--f-mono);font-size:.56rem;color:var(--ink-3);line-height:1.55}
 .lib-tag{display:inline-block;font-family:var(--f-mono);font-size:.48rem;letter-spacing:.06em;text-transform:uppercase;
   padding:2px 5px;border-radius:4px;background:var(--pine-soft);color:var(--pine);margin-left:5px;vertical-align:1px}
@@ -240,6 +240,12 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
 .demo-cap a{font-family:var(--f-mono);font-size:.52rem;letter-spacing:.06em;color:#9be7cd;text-decoration:none;
   border-bottom:1px solid rgba(155,231,205,.45);padding-bottom:1px;white-space:nowrap}
 .demo-cap a[hidden]{display:none}
+
+.clip-demo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#07100d;display:none}
+.clip-demo.on{display:block}
+.lib-mode{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.lib-mode .seg-mini{flex:0 0 62%}
+.lib-mode .hint{flex:1;min-width:0}
 
 /* credits */
 .credits{display:flex;flex-direction:column;gap:9px}

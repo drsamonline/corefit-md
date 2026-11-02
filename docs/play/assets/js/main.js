@@ -381,6 +381,16 @@
   function openClip(ex) {
     clipEx = ex;
     var c = S.clipFor(ex);
+    var useVideo = !!ex.videoId && videoWanted();
+    $('clipDemo').classList.toggle('on', !useVideo);
+    $('clipDemo').setAttribute('src', ex.demo || '');
+    $('clipDemo').alt = CF.pick(ex.name);
+    $('clipOpen').href = ex.videoId
+      ? 'https://www.youtube.com/watch?v=' + ex.videoId + '&t=' + Math.floor(c.start) + 's'
+      : 'https://www.youtube.com/results?search_query=' + encodeURIComponent(CF.pick(ex.name) + ' exercise how to');
+    $('clipOpen').textContent = ex.videoId ? 'Open on YouTube ↗' : 'Find a clip ↗';
+    $('clipFind').href = 'https://www.youtube.com/results?search_query=' +
+      encodeURIComponent(CF.pick(ex.name) + ' exercise proper form');
     $('clipName').textContent = UI.exName(ex);
     $('clipMeta').textContent = CF.t('clip.start') + ' ' + UI.fmtSec(c.start) + ' → ' + UI.fmtSec(c.end);
     $('trimStart').value = Math.round(c.start);
@@ -393,7 +403,10 @@
     clipMode = ex.mode || 'time';
     setMode(clipMode);
     UI.open('clipSheet');
-    mountClip(ex, c);
+    if (useVideo) mountClip(ex, c); else {
+      if (clipPlayer) { clipPlayer.destroy(); clipPlayer = null; }
+      $('clipHost').innerHTML = '';
+    }
   }
 
   function setMode(m) {
@@ -410,7 +423,7 @@
     clipPlayer = CF.Video.create($('clipHost'), {
       videoId: ex.videoId, backupIds: ex.backupIds || [],
       start: c.start, end: c.end, muted: !S.get('videoSound'),
-      onError: function () { UI.toast('Preview blocked here'); }
+      onError: function () { $('clipDemo').classList.add('on'); $('clipHost').innerHTML = ''; }
     });
     clipPlayer.play();
   }
@@ -679,12 +692,16 @@
       applyTheme();
       UI.renderSettings();
     });
-    $('videoModeSwitch').addEventListener('click', function (e) {
+    function setVideoMode(mode) {
+      S.set('videoMode', mode);
+      UI.renderSettings();
+      if (clipEx && $('clipSheet').classList.contains('on')) openClip(clipEx);
+      UI.toast(mode === 'off' ? 'Figures only' : 'Clips when online');
+    }
+    document.addEventListener('click', function (e) {
       var b = e.target.closest('button[data-vmode]');
       if (!b) return;
-      S.set('videoMode', b.dataset.vmode);
-      UI.renderSettings();
-      UI.toast(b.dataset.vmode === 'off' ? 'Figures only' : 'Clips when online');
+      setVideoMode(b.dataset.vmode);
     });
     $('btnCredits').addEventListener('click', function () {
       UI.renderCredits();

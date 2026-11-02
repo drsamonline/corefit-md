@@ -1,32 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Cool-down: child's pose and slow breathing, exhale longer than you inhale">
-<title>Cool-down: child's pose and slow breathing, exhale longer than you inhale</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Cool-down: child's pose and slow breathing — exhale longer than you inhale">
+<title>Cool-down: child's pose and slow breathing — exhale longer than you inhale</title>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="#ff7a45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <radialGradient id="pool" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ff7a45" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ff7a45" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
 <style>
-  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
-  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
-  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
-  .head{fill:#e7f3ed;stroke:none}
-  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
-  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
-  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  .near{fill:none;stroke:#eaf5ef;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .far{fill:none;stroke:#6f9488;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+  .move{fill:none;stroke:#ff7a45;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+  .torso{fill:#eaf5ef;stroke:none}
+  .torsofar{fill:#6f9488;stroke:none;opacity:.9}
+  .head{fill:#eaf5ef;stroke:none}
+  .headfar{fill:#6f9488;stroke:none;opacity:.9}
+  .mat{stroke:#2f5e52;stroke-width:2.5;stroke-linecap:round}
+  .shadow{fill:#000000;opacity:.32}
+  .ref{fill:none;stroke:#6f9488;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:4 7;opacity:.75}
+  .arc{fill:none;stroke:#ff7a45;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:5 6;opacity:.8}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.8}
   g[data-o]{transform-box:view-box}
   @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
 
-  .breath{animation:breath 4.5s ease-in-out infinite;transform-box:view-box;transform-origin:150px 128px}
-  @keyframes breath{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+  .breath{animation:breath 4.6s ease-in-out infinite;transform-box:view-box;transform-origin:150px 130px}
+  @keyframes breath{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
 </style>
-<line class="mat" x1="28" y1="134" x2="292" y2="134"/>
+<ellipse cx="132" cy="112" rx="100" ry="48" fill="url(#pool)"/>
+<line class="mat" x1="26" y1="134" x2="294" y2="134"/>
+<g transform="translate(160 134) scale(1.1) translate(-160 -134)">
 
+  <ellipse class="shadow" cx="140" cy="136" rx="70" ry="3.5"/>
   <g class="breath">
-    <line class="f" x1="152" y1="112" x2="110" y2="120"/>
-    <circle class="head" cx="94" cy="124" r="9.5"/>
-    <line class="l" x1="110" y1="120" x2="70" y2="132"/>
-    <line class="l" x1="152" y1="112" x2="172" y2="132"/>
-    <line class="l" x1="172" y1="132" x2="200" y2="132"/>
-    <circle class="joint" cx="152" cy="112" r="3.2"/>
+    <path class="torso" d="M108 114 L152 106 L156 118 L110 126 Z"/>
+    <line class="far" x1="112" y1="120" x2="76" y2="131"/>
+    <line class="near" x1="110" y1="117" x2="72" y2="130"/>
+    <line class="far" x1="152" y1="116" x2="170" y2="132"/>
+    <line class="far" x1="170" y1="132" x2="196" y2="132"/>
+    <line class="near" x1="150" y1="110" x2="172" y2="131"/>
+    <line class="near" x1="172" y1="131" x2="200" y2="131"/>
+    <line class="near" x1="108" y1="114" x2="98" y2="120" stroke-width="5"/>
+    <circle class="head" cx="88" cy="123" r="8.5"/>
   </g>
-  <circle class="glow" cx="120" cy="112" r="4" fill="none">
-    <animate attributeName="r" values="3;16;3" dur="4.5s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values=".7;0;.7" dur="4.5s" repeatCount="indefinite"/>
+  <circle class="glow" cx="118" cy="110" r="4" fill="none">
+    <animate attributeName="r" values="3;15;3" dur="4.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".7;0;.7" dur="4.6s" repeatCount="indefinite"/>
   </circle>
 
+</g>
 </svg>

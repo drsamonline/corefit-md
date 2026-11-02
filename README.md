@@ -48,7 +48,10 @@ Every move ships an **animated SVG figure** drawn for this app (`docs/play/asset
 - the embed is blocked or errors;
 - the device is offline (`navigator.onLine === false`);
 - the clip is shorter than its window (the player clamps the window to the real duration);
-- you choose **Settings → Video → Figures**.
+- you flip the **Clips / Figures only** switch at the top of the Library (also in Settings → Video).
+
+Tapping any library card opens the sheet even with no video at all: it shows the animated figure,
+a link to open the clip on YouTube, and a search for a better one.
 
 The figures are original drawings, not frames from the videos: the clips are other people's
 work, so they are embedded and credited — the channel name sits under the player and every
