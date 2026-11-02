@@ -202,7 +202,7 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
 .lib-badge{position:absolute;left:5px;bottom:5px;z-index:3;font-family:var(--f-mono);font-size:.48rem;font-weight:600;
   letter-spacing:.04em;color:#fff;background:rgba(0,0,0,.55);padding:2px 5px;border-radius:4px}
 .lib-body{flex:1;min-width:0}
-.lib-body b{display:block;font-size:.82rem;font-weight:600;letter-spacing:-.01em;word-spacing:.04em}
+.lib-body b{display:block;font-size:.82rem;font-weight:600;letter-spacing:-.01em;word-spacing:.12em}
 .lib-body small{font-family:var(--f-mono);font-size:.56rem;color:var(--ink-3);line-height:1.55}
 .lib-tag{display:inline-block;font-family:var(--f-mono);font-size:.48rem;letter-spacing:.06em;text-transform:uppercase;
   padding:2px 5px;border-radius:4px;background:var(--pine-soft);color:var(--pine);margin-left:5px;vertical-align:1px}
@@ -225,7 +225,7 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
   flex-shrink:0;border:1px solid var(--line)}
 .video-host{position:absolute;inset:0}
 .video-host iframe,.video-host>div,.video-host video{width:100%;height:100%;border:0;display:block;object-fit:cover}
-.video-badge{position:absolute;left:8px;top:8px;z-index:3;display:inline-flex;align-items:center;gap:5px;
+.video-badge{position:absolute;left:8px;top:8px;z-index:6;display:inline-flex;align-items:center;gap:5px;
   font-family:var(--f-mono);font-size:.53rem;font-weight:600;letter-spacing:.06em;color:#fff;
   background:rgba(6,16,13,.62);border:1px solid rgba(255,255,255,.18);padding:4px 7px;border-radius:6px}
 .video-badge svg{width:11px;height:11px}

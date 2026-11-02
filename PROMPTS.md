@@ -440,6 +440,26 @@ Look at each generated asset and answer honestly. A "no" means regenerate, not s
 
 ---
 
+## What was actually generated
+
+Four stills are in the repo, made with this brief through the Apify image actor
+(`fayoussef/bulk-ai-image-generator`, Gemini image model, billed to the Apify account):
+
+| Asset | Verdict |
+|---|---|
+| `plank.jpg` | pass — elbows under shoulders, one straight line, no sag |
+| `bicycle.jpg` | pass — rib rotation, opposite elbow to knee |
+| `sideplank.jpg` | pass — elbow under shoulder, hips lifted, feet stacked |
+| `glutebridge.jpg` | pass — shins vertical, shoulder-hip-knee in line |
+| dead bug | **rejected** — one arm rested on the floor instead of both reaching up |
+| bird dog | **rejected** — performed from a half-kneel, not from all fours |
+| hollow hold | **rejected** — read as a boat pose, hips well off the mat |
+| warm-up, cool-down, superman | not generated — the account hit its billing-cycle cap mid-run |
+
+The rejected three and the three missing ones keep their SVG figures, which is exactly the
+fallback the app is built around. Re-run the prompts for those six when the billing cycle
+resets; the acceptance checklist above is what caught them.
+
 ## Licence note
 
 Assets you generate are yours to license — that is the whole point of this route, and it is
