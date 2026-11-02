@@ -195,8 +195,8 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
 .lib-card.static{cursor:default}
 .lib-card.static:active{transform:none}
 .lib-thumb{position:relative;width:86px;height:58px;border-radius:9px;overflow:hidden;background:#0a1613;flex-shrink:0;border:1px solid var(--line)}
-.lib-thumb img{width:100%;height:100%;object-fit:contain;display:block;padding:2px}
-.lib-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5));pointer-events:none}
+.lib-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.lib-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 68%,rgba(0,0,0,.42));pointer-events:none}
 .lib-play{position:absolute;inset:0;display:grid;place-items:center;z-index:2}
 .lib-play svg{width:19px;height:19px;stroke:#fff;fill:rgba(255,255,255,.18);stroke-width:1.6}
 .lib-badge{position:absolute;left:5px;bottom:5px;z-index:3;font-family:var(--f-mono);font-size:.48rem;font-weight:600;

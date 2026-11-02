@@ -63,8 +63,9 @@ source is listed in the app's *Sources and credits* sheet. Nothing is copied int
 a shared style block, a character-lock strategy, ten per-move prompts (image and motion),
 negative prompts, an acceptance checklist, and the watermark spec.
 
-Four generated stills are already in `docs/play/assets/media/` (plank, bicycle, side plank,
-glute bridge) — watermarked, 1280×720, under 130 KB each. The rest still use the SVG figures.
+All ten moves now have a generated still in `docs/play/assets/media/` — watermarked,
+1280×720, 68–127 KB each. The animated SVG figures remain as the fallback for anything
+missing, and as the source for the `scripts/figures.py` pipeline.
 
 Drop more into `docs/play/assets/media/` and run `python3 scripts/media_manifest.py`.
 The app prefers them over the figures everywhere, per exercise, falling back for anything

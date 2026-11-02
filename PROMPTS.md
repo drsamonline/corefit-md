@@ -455,23 +455,25 @@ Look at each generated asset and answer honestly. A "no" means regenerate, not s
 
 ## What was actually generated
 
-Four stills are in the repo, made with this brief through the Apify image actor
-(`fayoussef/bulk-ai-image-generator`, Gemini image model, billed to the Apify account):
+All ten stills are now in `docs/play/assets/media/` — 1280×720 JPEG, watermarked, 68–127 KB each.
 
-| Asset | Verdict |
-|---|---|
-| `plank.jpg` | pass — elbows under shoulders, one straight line, no sag |
-| `bicycle.jpg` | pass — rib rotation, opposite elbow to knee |
-| `sideplank.jpg` | pass — elbow under shoulder, hips lifted, feet stacked |
-| `glutebridge.jpg` | pass — shins vertical, shoulder-hip-knee in line |
-| dead bug | **rejected** — one arm rested on the floor instead of both reaching up |
-| bird dog | **rejected** — performed from a half-kneel, not from all fours |
-| hollow hold | **rejected** — read as a boat pose, hips well off the mat |
-| warm-up, cool-down, superman | not generated — the account hit its billing-cycle cap mid-run |
+| Asset | Source | Verdict |
+|---|---|---|
+| plank | Apify actor (Gemini image) | pass |
+| bicycle | Apify actor | pass |
+| side plank | Apify actor | pass |
+| glute bridge | Apify actor | pass |
+| dead bug | Nano Banana, second attempt | pass — both arms up, opposite pair moving |
+| hollow hold | Nano Banana, second attempt | pass — hips stay on the mat, shallow curve |
+| bird dog | Nano Banana, second attempt | pass, with a caveat: the supporting knee is down but its shin is raised rather than lying flat |
+| warm-up | Nano Banana | pass |
+| cool-down | Nano Banana | pass |
+| superman | Nano Banana | pass |
 
-The rejected three and the three missing ones keep their SVG figures, which is exactly the
-fallback the app is built around. Re-run the prompts for those six when the billing cycle
-resets; the acceptance checklist above is what caught them.
+The three that failed the first time — dead bug, bird dog, hollow hold — were fixed by naming
+the exact failure in the prompt: "BOTH arms point straight up", "FOUR points of contact, not
+kneeling up", "the HIPS AND GLUTES STAY ON THE FLOOR — not a boat pose". That wording is what
+is in the prompts above now.
 
 ## Licence note
 

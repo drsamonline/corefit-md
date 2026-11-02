@@ -6,8 +6,28 @@
     "src": "assets/media/plank.jpg",
     "type": "image"
   },
+  "deadbug": {
+    "src": "assets/media/deadbug.jpg",
+    "type": "image"
+  },
+  "birddog": {
+    "src": "assets/media/birddog.jpg",
+    "type": "image"
+  },
   "bicycle": {
     "src": "assets/media/bicycle.jpg",
+    "type": "image"
+  },
+  "hollow": {
+    "src": "assets/media/hollow.jpg",
+    "type": "image"
+  },
+  "warmup": {
+    "src": "assets/media/warmup.jpg",
+    "type": "image"
+  },
+  "cooldown": {
+    "src": "assets/media/cooldown.jpg",
     "type": "image"
   },
   "sideplank": {
@@ -16,6 +36,10 @@
   },
   "glutebridge": {
     "src": "assets/media/glutebridge.jpg",
+    "type": "image"
+  },
+  "superman": {
+    "src": "assets/media/superman.jpg",
     "type": "image"
   }
 };

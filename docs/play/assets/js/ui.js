@@ -225,9 +225,11 @@
       var list = CF.EXTRA_MOVES || [];
       for (var i = 0; i < list.length; i++) {
         var ex = list[i];
+        var m = CF.Media.get(ex.id);
+        var thumb = (m && m.poster) ? m.poster : (m && m.type === 'image' ? m.src : ex.demo);
         html += '<div class="lib-card static">' +
           '<span class="lib-thumb">' +
-            '<img src="' + ex.demo + '" alt="" loading="lazy" decoding="async">' +
+            '<img src="' + thumb + '" alt="" loading="lazy" decoding="async">' +
           '</span>' +
           '<span class="lib-body"><b>' + CF.pick(ex.name) + '</b>' +
           '<small>' + CF.pick(ex.tag) + ' · ' + CF.pick(ex.cue) + '</small></span>' +
