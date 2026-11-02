@@ -136,7 +136,7 @@ section:first-of-type{border-top:0}
 .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
 .sec-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:var(--muted)}
 h2.sec{font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.1}
-.sec-sub{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.6rem 0 0}
+.sec-sub{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.6rem 0 0;flex-basis:100%}
 
 .cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:.8rem;padding:1.4rem 1.3rem;box-shadow:var(--shadow)}
@@ -253,7 +253,7 @@ footer .stamp{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-t
       <img alt="licence: MIT" src="assets/badge-licence.svg">
     </div>
     <div class="facts">
-      <span><b>31</b> files</span>
+      <span><b>43</b> files</span>
       <span><b>0</b> dependencies</span>
       <span><b>3</b> languages</span>
       <span><b>6:15</b> warm-up to cool-down</span>
@@ -299,7 +299,8 @@ footer .stamp{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-t
         <h3>Every set opens on the movement</h3>
         <p>Each exercise carries a clip window. The player starts at 0:30, re-seeks on ready, and a watchdog pulls
           it back if playback ever passes the window end — so fifty seconds of plank keeps showing the plank.
-          If the clip is blocked, dead or you are offline, an animated figure takes its place.</p>
+          If the clip is blocked, dead or you are offline, a still of the same move takes its place —
+          so the workout becomes a slideshow rather than a black box.</p>
       </div>
       <div class="card">
         <span class="k">Programme</span>
@@ -320,16 +321,16 @@ footer .stamp{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-t
   <section>
     <div class="sec-head">
       <span class="sec-num">02</span><h2 class="sec">With the network off</h2>
-      <p class="sec-sub">Every move ships an animated figure drawn for this app — a few kilobytes of SVG, no connection, no licensing problem.</p>
+      <p class="sec-sub">Every move also has a still of its own — 1280×720, watermarked, a hundred kilobytes. No connection, no licensing problem, no black box.</p>
     </div>
     <div class="figures">
-      <figure><img src="play/assets/demo/plank.svg" alt="Animated figure of a forearm plank"><figcaption><b>Plank</b><span>anti-extension</span></figcaption></figure>
-      <figure><img src="play/assets/demo/deadbug.svg" alt="Animated figure of a dead bug"><figcaption><b>Dead bug</b><span>anti-extension</span></figcaption></figure>
-      <figure><img src="play/assets/demo/birddog.svg" alt="Animated figure of a bird dog"><figcaption><b>Bird dog</b><span>anti-rotation</span></figcaption></figure>
-      <figure><img src="play/assets/demo/bicycle.svg" alt="Animated figure of a bicycle crunch"><figcaption><b>Bicycle</b><span>rotation</span></figcaption></figure>
-      <figure><img src="play/assets/demo/hollow.svg" alt="Animated figure of a hollow body hold"><figcaption><b>Hollow hold</b><span>anti-extension</span></figcaption></figure>
+      <figure><img src="play/assets/media/plank.jpg" alt="Forearm plank demonstration still"><figcaption><b>Plank</b><span>anti-extension</span></figcaption></figure>
+      <figure><img src="play/assets/media/deadbug.jpg" alt="Dead bug demonstration still"><figcaption><b>Dead bug</b><span>anti-extension</span></figcaption></figure>
+      <figure><img src="play/assets/media/birddog.jpg" alt="Bird dog demonstration still"><figcaption><b>Bird dog</b><span>anti-rotation</span></figcaption></figure>
+      <figure><img src="play/assets/media/bicycle.jpg" alt="Bicycle crunch demonstration still"><figcaption><b>Bicycle</b><span>rotation</span></figcaption></figure>
+      <figure><img src="play/assets/media/hollow.jpg" alt="Hollow body hold demonstration still"><figcaption><b>Hollow hold</b><span>anti-extension</span></figcaption></figure>
     </div>
-    <p class="fig-note">These are original SVGs, not frames from the videos — the clips are other people's work and are
+    <p class="fig-note">These are generated for this app, not frames from the videos — the clips are other people's work and are
       only ever embedded, with the channel credited under the player and listed in the app's <em>Sources and credits</em>.</p>
   </section>
   <section>
@@ -385,8 +386,8 @@ footer .stamp{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-t
         <p>Here the clip window is data: <b>start 0:30, end 0:55</b>, editable per exercise. The player is created
           with that start, seeked again the moment it is ready, and re-seeked whenever playback passes the end.
           During each rest interval the next clip is preloaded, so the following set opens instantly.</p>
-        <p>If an embed is blocked, dead, or you are offline, the session still runs — an animated figure of the
-          movement takes the video's place, the channel is still credited, and the timer never notices.</p>
+        <p>If an embed is blocked, dead, or you are offline, the session still runs — a still of the movement
+          takes the video's place, the channel is still credited, and the timer never notices.</p>
       </div>
     </div>
   </section>
@@ -399,7 +400,7 @@ footer .stamp{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-t
       <div class="num"><b>0:30</b><span>clip in-point</span></div>
       <div class="num"><b>3</b><span>languages</span></div>
       <div class="num"><b>0</b><span>runtime deps</span></div>
-      <div class="num"><b>363</b><span>KB, whole app</span></div>
+      <div class="num"><b>1.4</b><span>MB, whole app</span></div>
     </div>
   </section>
 
@@ -441,7 +442,7 @@ bash scripts/shot.sh . app</pre>
       <strong>CoreFit MD</strong> — part of the <a href="https://drsamonline.github.io/">drsamonline</a> estate.
       MIT licensed. Video embeds belong to their creators.
     </div>
-    <div class="stamp">v2.5.0 · build 2026-11-02</div>
+    <div class="stamp">v2.6.0 · build 2026-11-02</div>
   </div>
 </footer>
 

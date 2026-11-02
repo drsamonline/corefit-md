@@ -251,16 +251,18 @@
       for (i = 0; i < all.length; i++) {
         var ex = all[i];
         if (!ex.credit) continue;
+        var mm = CF.Media.get(ex.id);
         html += '<div class="credit">' +
-          '<img src="' + ex.demo + '" alt="">' +
+          '<img src="' + (mm && mm.type === 'image' ? mm.src : ex.demo) + '" alt="">' +
           '<div><b>' + CF.pick(ex.name) + '</b>' +
           '<small>' + ex.credit.title + '<br>' + ex.credit.author + ' · ' +
-          '<a href="' + ex.credit.url + '" target="_blank" rel="noopener">YouTube ↗</a></small></div>' +
+          '<a href="' + ex.credit.url + '" target="_blank" rel="noopener">YouTube ↗</a>' +
+          (mm ? '<br>Still: generated for CoreFit MD' : '') + '</small></div>' +
         '</div>';
       }
       html += '<div class="credit"><img src="assets/demo/warmup.svg" alt="">' +
         '<div><b>' + CF.t('phase.warmup') + ' / ' + CF.t('phase.cooldown') + '</b>' +
-        '<small>Original SVG drawn for this app</small></div></div>';
+        '<small>Stills and animated figures drawn or generated for CoreFit MD</small></div></div>';
       $('creditsList').innerHTML = html;
     },
 

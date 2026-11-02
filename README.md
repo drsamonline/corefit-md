@@ -39,17 +39,21 @@ the plank. During each rest interval the next exercise is preloaded with `cueVid
 which removes the black frame at the top of the following set. Every window is editable in
 the app's Library: scrub, hit **now** on either field, save.
 
-## Offline by default
+## Where the motion comes from
 
-The app ships **local clips only**. `Settings → Clip source` defaults to *Local*, which means
-the app makes no network request of any kind — no YouTube script, no thumbnails, nothing.
-Motion comes from `docs/play/assets/media/`; a still is shown for any move without a clip.
+`Settings → Clip source` decides:
 
-YouTube is still in the code but off by default, for anyone who has no local clips yet.
-Switch it on under `Clip source → YouTube` and the 0:30 clip logic comes back.
+- **YouTube** (default) — the 0:30 clip window plays when the embed loads. Four of the five
+  original IDs are alive; Bird Dog was replaced after the original 404'd.
+- **Local** — no network request of any kind. Motion comes from `assets/media/` if a clip
+  exists there; otherwise the still is shown.
+
+Either way, every move has a **local still** in `assets/media/` (watermarked, 1280×720), so a
+blocked embed, a dead video or a flight turns the workout into a slideshow rather than a black
+box. Animated SVG figures remain underneath that as the final fallback.
 
 On the first visit over HTTPS the service worker caches every media file in the manifest, so
-one session online makes the whole workout offline afterwards.
+one session online makes the stills available offline afterwards.
 
 ## When there is no network
 

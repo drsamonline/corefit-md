@@ -167,7 +167,7 @@
     if (seg.k === 'warmup' || seg.k === 'cooldown') {
       var block = seg.k === 'warmup' ? CF.WARMUP : CF.COOLDOWN;
       $('exCount').textContent = CF.t('phase.' + seg.k);
-      $('exName').textContent = seg.k === 'warmup' ? 'Prepare to move' : 'Wind down';
+      $('exName').textContent = CF.t(seg.k === 'warmup' ? 'stage.prepare' : 'stage.winddown');
       $('exNext').textContent = '';
       cue = CF.pick(block.cues[0]);
       if (player) player.pause();
@@ -210,7 +210,7 @@
       $('exName').textContent = CF.t('stage.breathe');
       var up = CF.EXERCISES[seg.ex + 1];
       $('exNext').textContent = up ? CF.t('stage.upnext') + ' · ' + CF.pick(up.name) : '';
-      cue = 'Roll down, breathe in through the nose, reset the brace.';
+      cue = CF.t('stage.restcue');
       $('btnRepTap').hidden = true;
       if (up) {
         var upSrc = CF.Media.sourceFor(up);
@@ -404,7 +404,7 @@
   function openClip(ex) {
     clipEx = ex;
     var c = S.clipFor(ex);
-    var useVideo = !!ex.videoId && videoWanted();
+    var useVideo = !!ex.videoId && videoWanted() && youtubeAllowed();
     var media = CF.Media.sourceFor(ex);
     $('clipMedia').classList.toggle('on', !useVideo);
     if (!useVideo) {
