@@ -4,7 +4,7 @@
    cache name is bumped on every release, and registration.update() is called by
    the page — a cache-first HTML response is how releases go missing. */
 
-const CACHE = 'corefit-v2.1.0';
+const CACHE = 'corefit-v2.2.0';
 const SHELL = [
   './',
   './index.html',
@@ -23,6 +23,16 @@ const SHELL = [
   './assets/js/session.js',
   './assets/js/ui.js',
   './assets/js/main.js',
+  './assets/demo/plank.svg',
+  './assets/demo/deadbug.svg',
+  './assets/demo/birddog.svg',
+  './assets/demo/bicycle.svg',
+  './assets/demo/hollow.svg',
+  './assets/demo/warmup.svg',
+  './assets/demo/cooldown.svg',
+  './assets/demo/sideplank.svg',
+  './assets/demo/glutebridge.svg',
+  './assets/demo/superman.svg',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable.png'

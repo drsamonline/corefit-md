@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Glute bridge: heels down, lift the hips, squeeze, lower slowly">
+<title>Glute bridge: heels down, lift the hips, squeeze, lower slowly</title>
+<style>
+  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
+  .head{fill:#e7f3ed;stroke:none}
+  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
+  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  g[data-o]{transform-box:view-box}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
+
+  .hips{animation:hips 3.6s ease-in-out infinite}
+  @keyframes hips{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-12deg)}}
+</style>
+<line class="mat" x1="28" y1="134" x2="292" y2="134"/>
+
+  <line class="f" x1="96" y1="120" x2="150" y2="118"/>
+  <circle class="head" cx="78" cy="118" r="9.5"/>
+  <line class="l" x1="96" y1="120" x2="72" y2="130"/>
+  <g data-o="1" style="transform-origin:150px 118px" class="hips">
+    <line class="l" x1="150" y1="118" x2="186" y2="104"/>
+    <line class="l" x1="186" y1="104" x2="204" y2="130"/>
+    <circle class="joint" cx="186" cy="104" r="3.2"/>
+  </g>
+
+</svg>

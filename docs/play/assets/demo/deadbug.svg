@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Dead bug: opposite arm and leg lower slowly while the low back stays flat">
+<title>Dead bug: opposite arm and leg lower slowly while the low back stays flat</title>
+<style>
+  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
+  .head{fill:#e7f3ed;stroke:none}
+  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
+  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  g[data-o]{transform-box:view-box}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
+
+  .armUp{animation:arm 4.4s ease-in-out infinite}
+  @keyframes arm{0%,22%{transform:rotate(0)}46%,66%{transform:rotate(-58deg)}88%,100%{transform:rotate(0)}}
+  .legSet{animation:leg 4.4s ease-in-out infinite}
+  .legSet2{animation:leg2 4.4s ease-in-out infinite}
+  @keyframes leg{0%,22%{transform:rotate(0)}46%,66%{transform:rotate(46deg)}88%,100%{transform:rotate(0)}}
+  @keyframes leg2{0%,22%{transform:rotate(0)}46%,66%{transform:rotate(-10deg)}88%,100%{transform:rotate(0)}}
+</style>
+<line class="mat" x1="28" y1="132" x2="292" y2="132"/>
+
+  <line class="f" x1="82" y1="124" x2="156" y2="124"/>
+  <circle class="head" cx="64" cy="119" r="10"/>
+  <circle class="joint" cx="156" cy="124" r="3.4"/>
+  <line class="l" x1="82" y1="128" x2="120" y2="131"/>
+  <g data-o="1" style="transform-origin:88px 122px" class="armUp">
+    <line class="l" x1="88" y1="122" x2="96" y2="86"/>
+  </g>
+  <g data-o="1" style="transform-origin:156px 124px" class="legSet">
+    <line class="l" x1="156" y1="124" x2="180" y2="94"/>
+    <line class="l" x1="180" y1="94" x2="208" y2="94"/>
+    <circle class="joint" cx="180" cy="94" r="3"/>
+  </g>
+  <g data-o="1" style="transform-origin:156px 124px" class="legSet2">
+    <line class="l" x1="156" y1="124" x2="178" y2="98"/>
+    <line class="l" x1="178" y1="98" x2="204" y2="100"/>
+  </g>
+
+</svg>

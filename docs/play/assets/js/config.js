@@ -4,7 +4,7 @@
   'use strict';
 
   CF.CONFIG = {
-    VERSION: '2.1.0',
+    VERSION: '2.2.0',
     BUILD: '2026-11-02',
     KEYS: {
       history:  'corefit.history.v2',
@@ -37,6 +37,7 @@
       haptics: true,
       wake: true,
       videoSound: false,
+      videoMode: 'auto',
       warmup: true,
       cooldown: true,
       speed: 1,

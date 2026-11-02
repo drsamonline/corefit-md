@@ -22,15 +22,19 @@ check support rather than take my word for it.
 | 1.5 | Poster + deep link when an embed is blocked | The timer never notices; you still get to the demo | S | med | shipped |
 | 1.6 | Playback speed 0.75× / 1× / 1.25× | Learning pace without pausing every two seconds | S | low | shipped |
 | 1.7 | Native MP4 path with media fragments | `clip.mp4#t=30,55` — no YouTube, no ads, no autoplay policy | M | high | shipped (needs files) |
-| 1.8 | **Drag handles on a scrubber** for the clip window | Typing seconds is guesswork; dragging is judgement | M | high | next |
-| 1.9 | **Frame-step ◀ ▶ buttons** in the clip editor | Finding the exact frame the demo starts on | S | med | next |
-| 1.10 | **Per-side clip windows** for unilateral moves | Bird Dog's left and right demos may sit at different times | S | med | next |
-| 1.11 | **Offline video from the user's own files** — file picker → IndexedDB → `blob:` URL | Real offline video with no hosting: the file never leaves the device | L | high | next |
-| 1.12 | **Picture-in-picture** (`requestPictureInPicture`) | Float the demo over the plan list or another tab | M | med | later |
-| 1.13 | **Thumbnail from the clip's own frame** (`mq1.jpg`, or canvas capture for MP4) | The library card currently shows the video's poster, not the demo | S | low | later |
-| 1.14 | **Cue-aware audio track** — Web Speech reads the step list across the set | Screen-off sessions become possible without video | M | med | later |
-| 1.15 | **Orientation lock** during a session (`screen.orientation.lock`) | Stops the layout flipping mid-plank | S | low | idea |
-| 1.16 | **Clip health check** on first run — probe each video, warn on failure | Catches a dead embed before you are on the floor | S | med | idea |
+| 1.8 | **Animated SVG figure per move** as the offline fallback | A dead clip, a blocked embed or airplane mode still shows the movement | M | high | shipped |
+| 1.9 | **Automatic fallback triggers** — error, offline, or *Figures* mode | The timer never stops for a video problem | S | high | shipped |
+| 1.10 | **Clip window clamped to the real video duration** | A 25 s clip with a 0:30 start used to sit on a black frame | S | high | shipped |
+| 1.11 | **Sources and credits sheet**, channel credited under the player | Embedded work credited, never copied | S | med | shipped |
+| 1.12 | **Drag handles on a scrubber** for the clip window | Typing seconds is guesswork; dragging is judgement | M | high | next |
+| 1.13 | **Frame-step ◀ ▶ buttons** in the clip editor | Finding the exact frame the demo starts on | S | med | next |
+| 1.14 | **Per-side clip windows** for unilateral moves | Bird Dog's left and right demos may sit at different times | S | med | next |
+| 1.15 | **Offline video from the user's own files** — file picker → IndexedDB → `blob:` URL | Real offline video with no hosting: the file never leaves the device | L | high | next |
+| 1.16 | **Picture-in-picture** (`requestPictureInPicture`) | Float the demo over the plan list or another tab | M | med | later |
+| 1.17 | **Thumbnail from the clip's own frame** (`mq1.jpg`, or canvas capture for MP4) | The library card currently shows the video's poster, not the demo | S | low | later |
+| 1.18 | **Cue-aware audio track** — Web Speech reads the step list across the set | Screen-off sessions become possible without video | M | med | later |
+| 1.19 | **Orientation lock** during a session (`screen.orientation.lock`) | Stops the layout flipping mid-plank | S | low | idea |
+| 1.20 | **Clip health check** on first run — probe each video, warn on failure | Catches a dead embed before you are on the floor | S | med | idea |
 
 ## 02 · Session engine
 
@@ -137,6 +141,28 @@ check support rather than take my word for it.
 | 8.4 | **Screenshot script** committed (`scripts/shot.sh`) | The README image is reproducible, not hand-made | S | low | shipped |
 | 8.5 | **Optional GitHub Action** running 8.1 and 8.2 on push | CI, not a backend — the app still needs no server | S | med | later |
 | 8.6 | **Documented data schema** with a version field per key | Migration is currently implicit | S | med | later |
+
+## 09 · Workout content
+
+Software features are only half of it. These are the training-side additions, all of which
+need nothing but data and a figure.
+
+| # | Addition | Why | Effort | Impact | Status |
+|---|---|---|---|---|---|
+| 9.1 | **Three extra moves with their own figures** — side plank, glute bridge, superman | Anti-rotation, hip extension and spinal extension, which the core five leave out | S | high | shipped |
+| 9.2 | **A/B day rotation** — anti-extension day, anti-rotation day, lateral day | Three planes beat five variations of the same one | M | high | next |
+| 9.3 | **Swap a move in place** — long-press a plan row, pick a replacement | The cheapest version of a circuit builder | M | high | next |
+| 9.4 | **Mobility interludes** — 20 s hip flexor, thoracic opener between sets | Desk-worker mornings need the front of the hip opened | S | med | later |
+| 9.5 | **Load and leverage ladder** per move — knee push-up → full → feet elevated | Progression stated in the cue, not left to guesswork | S | med | later |
+| 9.6 | **Tempo prescriptions** — 3-1-3 for dead bug, 5 s holds for hollow | Tempo is free difficulty | S | med | later |
+| 9.7 | **Bilateral-to-unilateral progression** — bird dog → bird dog hold → bird dog with reach | A stated ladder rather than a jump | S | med | later |
+| 9.8 | **Formats** — EMOM core, ladder (10-8-6), AMRAP-lite, tabata | Same moves, four different sessions | M | med | later |
+| 9.9 | **Deload week as a real session** — half the volume, all of the cues | The programme already knows week 4 is a deload | S | med | later |
+| 9.10 | **Posterior-chain day** — superman, bird dog, glute bridge, dead bug | Balances a flexion-heavy week | S | med | later |
+| 9.11 | **Warm-up variants** — standing, supine, desk-chair | The right warm-up depends on where you are | S | low | idea |
+| 9.12 | **Bracing ladder** — breathe → brace → brace-and-breathe, taught in week 1 | Most people never learn to brace; everything else depends on it | M | high | idea |
+| 9.13 | **Seated / travel session** — chair-based, no floor, hotel-room floor | The habit survives travel | M | med | idea |
+| 9.14 | **Return-to-training ramp** — four weeks, 60% → 100% volume | Pairs with the clinical section | M | high | idea |
 
 ---
 

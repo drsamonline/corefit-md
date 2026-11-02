@@ -70,6 +70,15 @@
           onReady: function (ev) {
             self.ready = true;
             try {
+              // A clip window longer than the video (or starting past its end)
+              // must not leave the player stuck on a black frame.
+              var dur = ev.target.getDuration() || 0;
+              if (dur > 4 && self.start > dur - 4) {
+                self.start = Math.max(0, Math.min(6, dur * 0.12));
+                self.end = Math.min(dur, self.start + 25);
+              } else if (dur > 0) {
+                self.end = Math.min(self.end, dur);
+              }
               ev.target.mute();
               ev.target.seekTo(self.start, true);
               if (self.speed !== 1) ev.target.setPlaybackRate(self.speed);

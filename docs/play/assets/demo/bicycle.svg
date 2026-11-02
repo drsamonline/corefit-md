@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Bicycle crunch: rotate from the ribs, alternate elbow toward the opposite knee">
+<title>Bicycle crunch: rotate from the ribs, alternate elbow toward the opposite knee</title>
+<style>
+  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
+  .head{fill:#e7f3ed;stroke:none}
+  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
+  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  g[data-o]{transform-box:view-box}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
+
+  .legA{animation:legA 3.4s ease-in-out infinite}
+  .legB{animation:legB 3.4s ease-in-out infinite}
+  .elbow{animation:elbow 3.4s ease-in-out infinite}
+  @keyframes legA{0%,100%{transform:rotate(0)}50%{transform:rotate(-26deg)}}
+  @keyframes legB{0%,100%{transform:rotate(26deg)}50%{transform:rotate(0)}}
+  @keyframes elbow{0%,100%{transform:rotate(0)}50%{transform:rotate(12deg)}}
+</style>
+<line class="mat" x1="28" y1="132" x2="292" y2="132"/>
+
+  <line class="f" x1="88" y1="113" x2="162" y2="124"/>
+  <circle class="head" cx="68" cy="104" r="10"/>
+  <circle class="joint" cx="162" cy="124" r="3.4"/>
+  <g data-o="1" style="transform-origin:90px 114px" class="elbow">
+    <line class="l" x1="90" y1="114" x2="100" y2="94"/>
+  </g>
+  <g data-o="1" style="transform-origin:162px 124px" class="legA">
+    <line class="l" x1="162" y1="124" x2="190" y2="98"/>
+    <line class="l" x1="190" y1="98" x2="218" y2="112"/>
+    <circle class="joint" cx="190" cy="98" r="3"/>
+  </g>
+  <g data-o="1" style="transform-origin:162px 124px" class="legB">
+    <line class="l" x1="162" y1="124" x2="144" y2="98"/>
+    <line class="l" x1="144" y1="98" x2="154" y2="74"/>
+    <circle class="joint" cx="144" cy="98" r="3"/>
+  </g>
+
+</svg>

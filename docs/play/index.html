@@ -184,6 +184,17 @@
         <p class="hint" data-i18n="clip.hint">The workout loops only this window, so every set opens on the demonstration itself.</p>
       </div>
       <div class="lib" id="libList"></div>
+
+      <div class="card" style="margin-top:2px">
+        <div class="card-head">
+          <span class="label" data-i18n="lib.more">More moves</span>
+          <span class="label dim" data-i18n="lib.more.sub">offline demonstrations</span>
+        </div>
+        <p class="hint" data-i18n="lib.more.hint">Not in the default session. Each has its own animated figure, so it works with no connection.</p>
+      </div>
+      <div class="lib" id="extraList"></div>
+
+      <button class="btn btn-ghost" id="btnCredits"><svg class="ic"><use href="#i-book"/></svg><span data-i18n="credits.title">Sources and credits</span></button>
     </section>
   </main>
 
@@ -203,8 +214,11 @@
     <div class="video-card" id="videoCard">
       <div class="video-host" id="videoHost"></div>
       <div class="video-fallback" id="videoFallback">
-        <p id="fallbackText">Video unavailable here.</p>
-        <a id="fallbackLink" href="#" target="_blank" rel="noopener">Open on YouTube ↗</a>
+        <img id="demoImg" src="" alt="">
+        <div class="demo-cap">
+          <span id="demoLabel">Offline demonstration</span>
+          <a id="demoCredit" href="#" target="_blank" rel="noopener" hidden>Reference ↗</a>
+        </div>
       </div>
       <div class="video-noclip" id="noClip"><span id="noClipCue"></span></div>
       <div class="video-badge"><svg class="ic"><use href="#i-film"/></svg><span id="videoBadgeText">0:30</span></div>
@@ -322,6 +336,12 @@
       </div>
     </div>
     <div class="set-row">
+      <div><span data-i18n="set.videoMode">Video</span><small data-i18n="set.videoMode.d">Clips, or the offline figures only</small></div>
+      <div class="seg-mini sm" id="videoModeSwitch">
+        <button data-vmode="auto">Clips</button><button data-vmode="off">Figures</button>
+      </div>
+    </div>
+    <div class="set-row">
       <div><span data-i18n="set.speed">Playback speed</span><small>0.75× · 1× · 1.25×</small></div>
       <div class="seg-mini sm" id="speedSwitch">
         <button data-speed="0.75">0.75×</button><button data-speed="1">1×</button><button data-speed="1.25">1.25×</button>
@@ -370,6 +390,19 @@
     <div id="screenList" class="screen-list"></div>
     <p class="hint" data-i18n="screen.note">This is a training aid, not medical advice. Stop if a move hurts.</p>
     <button class="btn btn-primary" id="btnScreenSave" data-i18n="screen.ack">Save and continue</button>
+  </div>
+</div>
+
+
+<!-- ================= CREDITS ================= -->
+<div class="sheet" id="creditsSheet" role="dialog" aria-modal="true" aria-label="Sources and credits">
+  <div class="sheet-card">
+    <div class="sheet-head">
+      <div><h3 data-i18n="credits.title">Sources and credits</h3><p data-i18n="credits.sub">Every figure is drawn here; every clip is credited</p></div>
+      <button class="icon-btn sheet-close" data-close="creditsSheet" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+    </div>
+    <div id="creditsList" class="credits"></div>
+    <p class="hint" data-i18n="credits.note">The animated figures are original SVG drawn for this app, not frames from the videos. The clips are other people's work — they are embedded, never copied, and each is linked to its source.</p>
   </div>
 </div>
 

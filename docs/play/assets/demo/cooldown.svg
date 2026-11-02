@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Cool-down: child's pose and slow breathing, exhale longer than you inhale">
+<title>Cool-down: child's pose and slow breathing, exhale longer than you inhale</title>
+<style>
+  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
+  .head{fill:#e7f3ed;stroke:none}
+  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
+  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  g[data-o]{transform-box:view-box}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
+
+  .breath{animation:breath 4.5s ease-in-out infinite;transform-box:view-box;transform-origin:150px 128px}
+  @keyframes breath{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+</style>
+<line class="mat" x1="28" y1="134" x2="292" y2="134"/>
+
+  <g class="breath">
+    <line class="f" x1="152" y1="112" x2="110" y2="120"/>
+    <circle class="head" cx="94" cy="124" r="9.5"/>
+    <line class="l" x1="110" y1="120" x2="70" y2="132"/>
+    <line class="l" x1="152" y1="112" x2="172" y2="132"/>
+    <line class="l" x1="172" y1="132" x2="200" y2="132"/>
+    <circle class="joint" cx="152" cy="112" r="3.2"/>
+  </g>
+  <circle class="glow" cx="120" cy="112" r="4" fill="none">
+    <animate attributeName="r" values="3;16;3" dur="4.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".7;0;.7" dur="4.5s" repeatCount="indefinite"/>
+  </circle>
+
+</svg>

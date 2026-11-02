@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Bird dog: opposite arm and leg reach long while the hips stay level">
+<title>Bird dog: opposite arm and leg reach long while the hips stay level</title>
+<style>
+  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
+  .head{fill:#e7f3ed;stroke:none}
+  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
+  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  g[data-o]{transform-box:view-box}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
+
+  .armR{animation:armR 4s ease-in-out infinite}
+  .legR{animation:legR 4s ease-in-out infinite}
+  @keyframes armR{0%,18%{transform:rotate(0)}44%,62%{transform:rotate(-88deg)}86%,100%{transform:rotate(0)}}
+  @keyframes legR{0%,18%{transform:rotate(0)}44%,62%{transform:rotate(88deg)}86%,100%{transform:rotate(0)}}
+</style>
+<line class="mat" x1="28" y1="142" x2="292" y2="142"/>
+
+  <line class="f" x1="122" y1="112" x2="200" y2="112"/>
+  <circle class="head" cx="215" cy="103" r="9.5"/>
+  <line class="l" x1="200" y1="112" x2="206" y2="141"/>
+  <line class="l" x1="122" y1="112" x2="116" y2="141"/>
+  <circle class="joint" cx="122" cy="112" r="3.4"/>
+  <circle class="joint" cx="200" cy="112" r="3.4"/>
+  <g data-o="1" style="transform-origin:200px 112px" class="armR">
+    <line class="l" x1="200" y1="112" x2="212" y2="140"/>
+  </g>
+  <g data-o="1" style="transform-origin:122px 112px" class="legR">
+    <line class="l" x1="122" y1="112" x2="112" y2="140"/>
+  </g>
+  <line class="ghost" x1="118" y1="110" x2="206" y2="110"/>
+
+</svg>

@@ -189,11 +189,12 @@
       for (var i = 0; i < CF.EXERCISES.length; i++) {
         var ex = CF.EXERCISES[i], c = S.clipFor(ex);
         var tag = (ex.mode === 'reps' && ex.reps) ? '<span class="lib-tag">' + ex.reps + ' ' + CF.t('label.reps') + '</span>' : '';
+        var hasVideo = !!ex.videoId;
         html += '<button class="lib-card" data-id="' + ex.id + '">' +
           '<span class="lib-thumb">' +
-            '<img src="' + CF.Video.thumb(ex.videoId) + '" alt="" loading="lazy" decoding="async">' +
-            '<span class="lib-play"><svg class="ic"><use href="#i-play"/></svg></span>' +
-            '<span class="lib-badge">' + fmtSec(c.start) + '–' + fmtSec(c.end) + '</span>' +
+            '<img src="' + (ex.demo || '') + '" alt="" loading="lazy" decoding="async">' +
+            (hasVideo ? '<span class="lib-play"><svg class="ic"><use href="#i-play"/></svg></span>' : '') +
+            '<span class="lib-badge">' + (hasVideo ? fmtSec(c.start) + '–' + fmtSec(c.end) : CF.t('demo.figures')) + '</span>' +
           '</span>' +
           '<span class="lib-body"><b>' + exName(ex) + tag + '</b>' +
           '<small>' + CF.t('clip.start') + ' ' + fmtSec(c.start) + ' → ' + fmtSec(c.end) + '<br>' +
@@ -205,10 +206,45 @@
       $('libCount').textContent = CF.EXERCISES.length + ' ' + CF.t('label.moves');
     },
 
+    renderExtras: function () {
+      var html = '';
+      var list = CF.EXTRA_MOVES || [];
+      for (var i = 0; i < list.length; i++) {
+        var ex = list[i];
+        html += '<div class="lib-card static">' +
+          '<span class="lib-thumb">' +
+            '<img src="' + ex.demo + '" alt="" loading="lazy" decoding="async">' +
+          '</span>' +
+          '<span class="lib-body"><b>' + CF.pick(ex.name) + '</b>' +
+          '<small>' + CF.pick(ex.tag) + ' · ' + CF.pick(ex.cue) + '</small></span>' +
+        '</div>';
+      }
+      $('extraList').innerHTML = html;
+    },
+
+    renderCredits: function () {
+      var html = '', i;
+      var all = CF.EXERCISES.concat(CF.EXTRA_MOVES || []);
+      for (i = 0; i < all.length; i++) {
+        var ex = all[i];
+        if (!ex.credit) continue;
+        html += '<div class="credit">' +
+          '<img src="' + ex.demo + '" alt="">' +
+          '<div><b>' + CF.pick(ex.name) + '</b>' +
+          '<small>' + ex.credit.title + '<br>' + ex.credit.author + ' · ' +
+          '<a href="' + ex.credit.url + '" target="_blank" rel="noopener">YouTube ↗</a></small></div>' +
+        '</div>';
+      }
+      html += '<div class="credit"><img src="assets/demo/warmup.svg" alt="">' +
+        '<div><b>' + CF.t('phase.warmup') + ' / ' + CF.t('phase.cooldown') + '</b>' +
+        '<small>Original SVG drawn for this app</small></div></div>';
+      $('creditsList').innerHTML = html;
+    },
+
     renderAll: function () {
       UI.renderToday();
       if (UI.currentView === 'progress') UI.renderProgress();
-      if (UI.currentView === 'library') UI.renderLibrary();
+      if (UI.currentView === 'library') { UI.renderLibrary(); UI.renderExtras(); }
     },
 
     /* ---------------- settings ---------------- */
@@ -224,6 +260,9 @@
       var sp = S.get('speed');
       document.querySelectorAll('#speedSwitch button').forEach(function (b) {
         b.setAttribute('aria-pressed', parseFloat(b.dataset.speed) === sp ? 'true' : 'false');
+      });
+      document.querySelectorAll('#videoModeSwitch button').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.vmode === (S.get('videoMode') || 'auto') ? 'true' : 'false');
       });
       document.querySelectorAll('#themeSwitch button').forEach(function (b) {
         b.setAttribute('aria-pressed', b.dataset.theme === (S.get('theme') || 'auto') ? 'true' : 'false');
@@ -292,7 +331,7 @@
         v.classList.toggle('active', v.id === 'view-' + name);
       });
       if (name === 'progress') UI.renderProgress();
-      if (name === 'library') UI.renderLibrary();
+      if (name === 'library') { UI.renderLibrary(); UI.renderExtras(); }
     },
 
     /* ---------------- share card ---------------- */

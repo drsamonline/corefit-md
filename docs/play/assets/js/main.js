@@ -82,9 +82,9 @@
         start: clip.start, end: clip.end,
         speed: S.get('speed'),
         muted: !S.get('videoSound'),
-        onError: function () { showFallback(true, ex); },
+        onError: function () { showDemo(demoFor(ex)); },
         onReady: function (p) {
-          showFallback(false);
+          if (player && player.failed) showDemo(demoFor(ex)); else hideDemo();
           if (S.get('videoSound')) p.unmute(); else p.mute();
         }
       });
@@ -99,21 +99,46 @@
     }
   }
 
-  function showFallback(on, ex) {
+  // The offline layer: every move ships an animated SVG drawn for this app, so
+  // a dead embed, a blocked network or airplane mode still shows the movement.
+  function showDemo(opts) {
+    opts = opts || {};
     var fb = $('videoFallback');
-    fb.classList.toggle('on', !!on);
-    if (on && ex) {
-      var c = S.clipFor(ex);
-      fb.style.backgroundImage = 'linear-gradient(rgba(4,14,11,.74),rgba(4,14,11,.88)), url(' + CF.Video.thumb(ex.videoId, true) + ')';
-      $('fallbackLink').href = 'https://www.youtube.com/watch?v=' + ex.videoId + '&t=' + Math.floor(c.start) + 's';
-      $('fallbackText').textContent = 'Video unavailable here.';
+    var img = $('demoImg');
+    if (!opts.src) { hideDemo(); return; }
+    if (img.getAttribute('src') !== opts.src) img.setAttribute('src', opts.src);
+    img.alt = opts.label || '';
+    $('demoLabel').textContent = opts.label || CF.t('demo.offline');
+    var credit = $('demoCredit');
+    if (opts.creditUrl) {
+      credit.href = opts.creditUrl;
+      credit.textContent = (opts.creditLabel || 'Reference') + ' ↗';
+      credit.hidden = false;
+    } else {
+      credit.hidden = true;
     }
+    fb.classList.add('on');
+    $('videoHost').style.opacity = '0';
+    $('noClip').classList.remove('on');
+  }
+  function hideDemo() {
+    $('videoFallback').classList.remove('on');
+    $('videoHost').style.opacity = '1';
   }
 
-  function showNoClip(on, text) {
-    $('noClip').classList.toggle('on', !!on);
-    if (on) $('noClipCue').textContent = text || '';
-    $('videoHost').style.opacity = on ? '0' : '1';
+  function demoFor(ex) {
+    return {
+      src: ex.demo,
+      label: CF.pick(ex.name),
+      creditUrl: ex.credit && ex.credit.url,
+      creditLabel: ex.credit && ex.credit.author
+    };
+  }
+
+  function videoWanted() {
+    if (S.get('videoMode') === 'off') return false;
+    if (navigator.onLine === false) return false;
+    return true;
   }
 
   /* ================= stage ================= */
@@ -135,9 +160,8 @@
       $('exName').textContent = seg.k === 'warmup' ? 'Prepare to move' : 'Wind down';
       $('exNext').textContent = '';
       cue = CF.pick(block.cues[0]);
-      showNoClip(true, cue);
-      showFallback(false);
       if (player) player.pause();
+      showDemo({ src: block.demo, label: CF.t('phase.' + seg.k) });
       $('btnRepTap').hidden = true;
     } else if (seg.k === 'work') {
       $('exCount').textContent = (seg.ex + 1) + ' / ' + CF.EXERCISES.length + (seg.side ? ' · ' + CF.t(seg.side === 1 ? 'stage.sideL' : 'stage.sideR') : '');
@@ -147,12 +171,17 @@
       var modified = (S.profile.flags || []).length > 0;
       cue = CF.pick(ex.cue) + (modified ? '  ·  ' + CF.t('label.mod') + ': ' + CF.pick(ex.regression) : '');
       steps = ex.steps.map(function (s, i) { return '<li><b>' + (i + 1) + '</b><span>' + s + '</span></li>'; }).join('');
-      showNoClip(false);
-      ensurePlayer(ex);
       var clip = S.clipFor(ex);
-      $('videoBadgeText').textContent = UI.fmtSec(clip.start);
-      player.seek(clip.start);
-      player.play();
+      $('videoBadgeText').textContent = ex.videoId ? UI.fmtSec(clip.start) : CF.t('demo.figures');
+      if (ex.videoId && videoWanted()) {
+        hideDemo();
+        ensurePlayer(ex);
+        player.seek(clip.start);
+        player.play();
+      } else {
+        if (player) player.pause();
+        showDemo(demoFor(ex));
+      }
       var repMode = ex.mode === 'reps' && ex.reps > 0;
       $('btnRepTap').hidden = !repMode;
       if (repMode) $('repText').textContent = '0 / ' + ex.reps;
@@ -162,8 +191,13 @@
       var up = CF.EXERCISES[seg.ex + 1];
       $('exNext').textContent = up ? CF.t('stage.upnext') + ' · ' + CF.pick(up.name) : '';
       cue = 'Roll down, breathe in through the nose, reset the brace.';
-      showNoClip(false);
       $('btnRepTap').hidden = true;
+      if (up) {
+        showDemo({ src: up.demo, label: CF.t('stage.upnext') + ' · ' + CF.pick(up.name),
+                   creditUrl: up.credit && up.credit.url, creditLabel: up.credit && up.credit.author });
+      } else {
+        showDemo({ src: CF.COOLDOWN.demo, label: CF.t('phase.cooldown') });
+      }
       if (player) {
         player.pause();
         // preload the next clip while resting so the set opens instantly
@@ -329,8 +363,7 @@
     $('doneView').classList.remove('on');
     $('workoutBody').style.display = 'flex';
     $('rail').innerHTML = '';
-    showFallback(false);
-    showNoClip(false);
+    hideDemo();
     if (!quiet) UI.renderAll();
   }
 
@@ -645,6 +678,17 @@
       S.set('theme', b.dataset.theme);
       applyTheme();
       UI.renderSettings();
+    });
+    $('videoModeSwitch').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-vmode]');
+      if (!b) return;
+      S.set('videoMode', b.dataset.vmode);
+      UI.renderSettings();
+      UI.toast(b.dataset.vmode === 'off' ? 'Figures only' : 'Clips when online');
+    });
+    $('btnCredits').addEventListener('click', function () {
+      UI.renderCredits();
+      UI.open('creditsSheet');
     });
     $('speedSwitch').addEventListener('click', function (e) {
       var b = e.target.closest('button[data-speed]');

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Hollow body hold: ribs down, low back flat, a shallow banana not a deep arch">
+<title>Hollow body hold: ribs down, low back flat, a shallow banana not a deep arch</title>
+<style>
+  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
+  .head{fill:#e7f3ed;stroke:none}
+  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
+  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  g[data-o]{transform-box:view-box}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
+
+  .rock{animation:rock 4s ease-in-out infinite}
+  @keyframes rock{0%,100%{transform:rotate(2.4deg)}50%{transform:rotate(-2.4deg)}}
+</style>
+<line class="mat" x1="28" y1="134" x2="292" y2="134"/>
+
+  <g data-o="1" style="transform-origin:168px 126px" class="rock">
+    <line class="f" x1="88" y1="112" x2="168" y2="126"/>
+    <circle class="head" cx="76" cy="108" r="10"/>
+    <line class="l" x1="88" y1="112" x2="46" y2="96"/>
+    <line class="l" x1="168" y1="126" x2="224" y2="108"/>
+    <circle class="joint" cx="168" cy="126" r="3.4"/>
+    <line class="ghost" x1="60" y1="104" x2="214" y2="112"/>
+  </g>
+  <path class="glow" d="M150 130 q12 -4 24 -2">
+    <animate attributeName="opacity" values=".25;1;.25" dur="2.6s" repeatCount="indefinite"/>
+  </path>
+
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Forearm plank: elbows under shoulders, one straight line from head to heels">
+<title>Forearm plank: elbows under shoulders, one straight line from head to heels</title>
+<style>
+  .f{fill:none;stroke:#e7f3ed;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+  .l{fill:none;stroke:#e7f3ed;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .ghost{fill:none;stroke:#7fa79a;stroke-width:3;stroke-linecap:round;stroke-dasharray:3 7;opacity:.55}
+  .head{fill:#e7f3ed;stroke:none}
+  .mat{stroke:#2b4c43;stroke-width:3;stroke-linecap:round}
+  .joint{fill:#0d2b24;stroke:#ff7a45;stroke-width:2.2}
+  .glow{fill:none;stroke:#ff7a45;stroke-width:3;stroke-linecap:round;opacity:.85}
+  g[data-o]{transform-box:view-box}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important} }
+
+  .breathe{animation:breathe 3.2s ease-in-out infinite}
+  @keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.8px)}}
+  .breathe{transform-box:view-box}
+</style>
+<line class="mat" x1="28" y1="142" x2="292" y2="142"/>
+
+  <g class="breathe">
+    <line class="f" x1="124" y1="127" x2="180" y2="110"/>
+    <line class="l" x1="124" y1="127" x2="90" y2="133"/>
+    <line class="l" x1="90" y1="133" x2="54" y2="138"/>
+    <line class="l" x1="180" y1="110" x2="177" y2="141"/>
+    <line class="l" x1="177" y1="141" x2="204" y2="141"/>
+    <circle class="head" cx="200" cy="101" r="10"/>
+    <circle class="joint" cx="124" cy="127" r="3.4"/>
+    <circle class="joint" cx="180" cy="110" r="3.4"/>
+    <line class="ghost" x1="56" y1="139" x2="196" y2="102"/>
+  </g>
+  <path class="glow" d="M132 132 q10 -5 20 -3">
+    <animate attributeName="opacity" values=".2;.95;.2" dur="3.2s" repeatCount="indefinite"/>
+  </path>
+
+</svg>
