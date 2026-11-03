@@ -4,7 +4,7 @@
    cache name is bumped on every release, and registration.update() is called by
    the page — a cache-first HTML response is how releases go missing. */
 
-const CACHE = 'corefit-v2.9.0';
+const CACHE = 'corefit-v2.9.1';
 const SHELL = [
   './',
   './index.html',
