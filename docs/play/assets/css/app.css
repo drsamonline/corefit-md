@@ -459,3 +459,24 @@ svg.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;str
 .sig-text small{font-family:var(--f-mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
 .sig-text b{font-size:.86rem;font-weight:700;color:var(--ink);word-spacing:.16em}
 .sig-handle{font-family:var(--f-mono);font-size:.68rem;color:var(--ink-3)}
+
+/* ---------- desktop: use the screen, not a phone column ---------- */
+/* The app was built as a 472px column, which on a laptop is a phone in the
+   middle of an empty field. From 900px it spreads: the shell widens, and the
+   cards of the active view flow into as many columns as fit, so a 1440px screen
+   shows the day, the program and the stats side by side instead of stacked. */
+@media (min-width:900px){
+  .app{max-width:none;padding:26px 30px calc(30px + env(safe-area-inset-bottom));gap:16px}
+  .view.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+               gap:16px;align-items:start}
+  .view.active > .card{margin-top:0}
+  .btn-grid{grid-template-columns:repeat(4,1fr)}
+  .stats{gap:1px}
+  .cal-grid{gap:8px}
+  .week{height:120px}
+  .segmented{max-width:520px}
+  .done-view p, .video-noclip span{max-width:60ch}
+}
+@media (min-width:1400px){
+  .view.active{grid-template-columns:repeat(auto-fit,minmax(400px,1fr))}
+}
