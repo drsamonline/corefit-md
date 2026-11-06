@@ -1,5 +1,7 @@
 # CoreFit MD
 
+[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-blue)](LICENSE)
+
 <p>
   <a href="https://drsamonline.github.io/corefit-md/"><img alt="live: online" src="docs/assets/badge-live.svg"></a>
   <img alt="offline: UI + history" src="docs/assets/badge-offline.svg">
