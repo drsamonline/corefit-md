@@ -8,7 +8,7 @@
   <img alt="deps: 0 runtime" src="docs/assets/badge-deps.svg">
   <img alt="backend: none" src="docs/assets/badge-backend.svg">
   <img alt="langs: EN HI GU" src="docs/assets/badge-langs.svg">
-  <a href="LICENSE"><img alt="licence: MIT" src="docs/assets/badge-licence.svg"></a>
+  <a href="LICENSE"><img alt="licence: PolyForm Noncommercial 1.0.0" src="docs/assets/badge-licence.svg"></a>
 </p>
 
 **A five-minute morning core routine where every set opens on the demonstration, not the intro.**
@@ -164,7 +164,7 @@ Nothing is gated behind it: no accounts, no tracking, no network requests.
 
 ## Licence
 
-MIT — see `LICENSE`. Video embeds belong to their creators.
+PolyForm Noncommercial 1.0.0 — see `LICENSE`. Video embeds belong to their creators.
 
 ---
 
